@@ -28,7 +28,7 @@ class OrderBook extends React.Component {
                             <ul className="pt-list-unstyled">
                                 <li className="heading" style={{display: 'flex', justifyContent: 'space-between', margin: '10px auto'}}>
                                     <span>Total ({this.props.pair})</span>
-                                    <span>Amount (ETH)</span>
+                                    <span>Amount ({this.props.currency})</span>
                                     <span>Price ({this.props.pair})</span>
                                 </li>
                                 {

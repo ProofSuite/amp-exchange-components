@@ -8,6 +8,36 @@
 .Buy .price {
   color: #00a45b; }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; }
+
+label span.curr-name {
+  position: absolute;
+  top: 0;
+  color: #728089;
+  right: 10px;
+  line-height: 2; }
+
+label.portion .box {
+  width: 45px;
+  height: 25px;
+  display: flex;
+  background: #27343d;
+  text-align: center;
+  margin: 0px auto;
+  padding: 3px;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #728089; }
+  label.portion .box input {
+    opacity: 0;
+    width: 0px;
+    margin: 0px; }
+
 li.heading span {
   font-weight: 600; }
 
