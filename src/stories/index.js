@@ -25,7 +25,7 @@ const Hello = ({ onClick, message }) => {
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Hello', module)
-  .add('Click', () => <OrderBook orderList={orderList} bookName="Sell" />);
+  .add('Click', () => <OrderBook orderList={orderList} bookName="Sell" pair="BTC" />);
 
 
 

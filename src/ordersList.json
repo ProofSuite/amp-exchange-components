@@ -1,29 +1,24 @@
 {
   "list": [
     {
-      "type": "sell",
       "amount": "123.00",
       "price": "0.001234"
     },
     {
-      "type": "sell",
       "amount": "123.00",
-      "price": "0.001234"
+      "price": "0.001233"
     },
     {
-      "type": "sell",
       "amount": "123.00",
-      "price": "0.001234"
+      "price": "0.001239"
     },
     {
-      "type": "sell",
       "amount": "123.00",
-      "price": "0.001234"
+      "price": "0.001231"
     },
     {
-      "type": "sell",
       "amount": "123.00",
-      "price": "0.001234"
+      "price": "0.00123"
     }
   ]
 }

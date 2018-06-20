@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import SingleOrder from "./SingleOrder";
 
 class OrderBook extends React.Component {
     render() {
+        const self = this;
         return (
-            <div style={{textAlign: 'center'}}>
-
-
-                <div className="pt-card pt-elevation-1 ">
-                    <h5>{this.props.bookName}</h5>
+            <div style={{textAlign: 'center', width: '350px'}} className={this.props.bookName}>
+                <div style={{textAlign: 'center', width: '350px', height: '400px', overflowY: 'scroll'}} className="pt-card pt-elevation-1 pt-dark">
+                    <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>{this.props.bookName}</h5>
                     {
                         this.props.loading &&
                         <div className="loading-overlay">
@@ -24,9 +24,26 @@ class OrderBook extends React.Component {
                     }
                     {
                         !this.props.loading &&
-                        <p>Back-end infrastructure for integrating, managing, and securing data of any kind, from any source, at massive scale.</p>
+                        <div className="list-container">
+                            <ul className="pt-list-unstyled">
+                                <li className="heading" style={{display: 'flex', justifyContent: 'space-between', margin: '10px auto'}}>
+                                    <span>Total ({this.props.pair})</span>
+                                    <span>Amount (ETH)</span>
+                                    <span>Price ({this.props.pair})</span>
+                                </li>
+                                {
+                                    [].concat(this.props.orderList.list)
+                                        .sort((a, b) => a.price < b.price)
+                                        .map((order, index) =>
+                                            <SingleOrder
+                                                decimalPoints={self.props.decimalPoints}
+                                                key={index}
+                                                order={order}
+                                            />)
+                                }
+                            </ul>
+                        </div>
                     }
-
                 </div>
             </div>
         )
@@ -35,10 +52,12 @@ class OrderBook extends React.Component {
 
 OrderBook.propTypes = {
     bookName: PropTypes.string.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
+    decimalPoints: PropTypes.number
 }
 OrderBook.defaultProps = {
-    loading: true
+    loading: false,
+    decimalPoints: 4,
 }
 
 export default OrderBook;
