@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe2f265b-d6b4-4785-bf77-51081ac4234b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/storybook-test.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.storybook/addons.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.storybook/config.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/.sass-cache/3073ea8708946f3eccc4b4e928f611eaf01d4b43/style.scssc" afterPath="$PROJECT_DIR$/src/styles/.sass-cache/3073ea8708946f3eccc4b4e928f611eaf01d4b43/style.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/OrderBook.js" afterPath="$PROJECT_DIR$/src/components/OrderBook.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SingleOrder.js" afterPath="$PROJECT_DIR$/src/components/SingleOrder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ordersList.json" afterPath="$PROJECT_DIR$/src/ordersList.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stories/index.js" afterPath="$PROJECT_DIR$/src/stories/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/css/style.css" afterPath="$PROJECT_DIR$/src/styles/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/css/style.css.map" afterPath="$PROJECT_DIR$/src/styles/css/style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/scss/style.scss" afterPath="$PROJECT_DIR$/src/styles/scss/style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderBook.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrderBook.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/OrderBook.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -52,6 +39,16 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,16 +127,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -166,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/components/SingleOrder.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/style.scss" />
         <option value="$PROJECT_DIR$/src/components/OrderBook.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -409,12 +397,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529388228282</updated>
-      <workItem from="1529388229622" duration="11682000" />
+      <workItem from="1529388229622" duration="12069000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11682000" />
+    <option name="totallyTimeSpent" value="12069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="269" y="23" width="1345" height="947" extended-state="0" />
@@ -570,6 +558,14 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
