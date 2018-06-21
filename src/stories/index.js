@@ -25,11 +25,40 @@ const Hello = ({ onClick, message }) => {
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Order Book', module)
-  .add('Sell Order', () => <OrderBook orderList={orderList} bookName="Sell" currency="ETH" pair="BTC" />)
-  .add('Buy Order', () => <OrderBook orderList={orderList} currency="ETH" bookName="Buy" pair="USDT" />);
+  .add('Sell Order', () => <OrderBook
+      orderList={orderList}
+      bookName="Sell"
+      currency="ETH"
+      pair="BTC"
+  />)
+  .add('Buy Order', () => <OrderBook
+      orderList={orderList}
+      currency="ETH"
+      bookName="Buy"
+      pair="USDT"
+  />);
 
 storiesOf('Order Form', module)
-    .add('Sell Book', () => <OrderForm totalBalance={1000} currentPrice={0.25} formName="Sell" currency="ETH" pair="BTC" />);
+    .add('Sell Book', () => <OrderForm
+        askPrice={0.25}
+        bidPrice={0.29}
+        totalCurrBalance={1000}
+        totalPairBalance={10}
+        formName="Sell"
+        currency="ETH"
+        pair="BTC"
+        loggedIn={false}
+    />)
+    .add('Buy Book', () => <OrderForm
+        askPrice={0.25}
+        bidPrice={0.29}
+        totalCurrBalance={10000}
+        totalPairBalance={10}
+        formName="Buy"
+        currency="XRP"
+        pair="BTC"
+        loggedIn={true}
+    />);
 
 
 

@@ -15,28 +15,43 @@ input[type=number]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0; }
 
-label span.curr-name {
-  position: absolute;
-  top: 0;
-  color: #728089;
-  right: 10px;
-  line-height: 2; }
+label {
+  text-align: left; }
+  label span.curr-name {
+    position: absolute;
+    top: 0;
+    color: #728089;
+    right: 10px;
+    line-height: 2; }
 
-label.portion .box {
-  width: 45px;
-  height: 25px;
+.order-form form .radio-buttons {
+  margin-top: 10px;
   display: flex;
-  background: #27343d;
-  text-align: center;
-  margin: 0px auto;
-  padding: 3px;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid #728089; }
-  label.portion .box input {
-    opacity: 0;
-    width: 0px;
-    margin: 0px; }
+  justify-content: flex-end; }
+  .order-form form .radio-buttons .box {
+    width: 45px;
+    height: 25px;
+    display: flex;
+    background: #27343d;
+    text-align: center;
+    padding: 3px;
+    margin-left: 10px;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #2584c1;
+    box-shadow: none;
+    border-radius: 3px; }
+    .order-form form .radio-buttons .box input {
+      opacity: 0;
+      width: 0px;
+      margin: 0px; }
+  .order-form form .radio-buttons .active-box {
+    box-shadow: 0 0 3px 2px #137cbd, 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
+    border-radius: 3px;
+    border: 1px solid transparent; }
+.order-form form button {
+  width: 100%;
+  min-height: 35px !important; }
 
 li.heading span {
   font-weight: 600; }
