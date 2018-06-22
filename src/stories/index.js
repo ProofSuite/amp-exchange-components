@@ -6,26 +6,27 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
+import { OrderBookContainer, OrderFormContainer, CoinSearchContainer } from "../containers";
 import * as orderList from "../ordersList.json";
+import * as coinsList from "../coinsList.json";
 
 import '../App.css';
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "../styles/css/style.css";
-
-const Hello = ({ onClick, message }) => {
-    return (
-        <div>
-            <h1 >{ message }</h1
-            ><button onClick={onClick}>Click</button>
-        </div>
-    )
-}
+import "@blueprintjs/table/lib/css/table.css";
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Order Book', module)
-  .add('Sell Order', () => <OrderBook
+  .add('Loading', () => <OrderBookContainer
+      orderList={orderList}
+      bookName="Sell"
+      loading={true}
+      currency="ETH"
+      pair="BTC"
+  />)
+  .add('Sell Order', () => <OrderBookContainer
       orderList={orderList}
       bookName="Sell"
       currency="ETH"
@@ -39,7 +40,7 @@ storiesOf('Order Book', module)
   />);
 
 storiesOf('Order Form', module)
-    .add('Sell Book', () => <OrderForm
+    .add('Logged Out State', () => <OrderFormContainer
         askPrice={0.25}
         bidPrice={0.29}
         totalCurrBalance={1000}
@@ -49,7 +50,17 @@ storiesOf('Order Form', module)
         pair="BTC"
         loggedIn={false}
     />)
-    .add('Buy Book', () => <OrderForm
+    .add('Sell Book', () => <OrderFormContainer
+        askPrice={0.25}
+        bidPrice={0.29}
+        totalCurrBalance={1000}
+        totalPairBalance={10}
+        formName="Sell"
+        currency="ETH"
+        pair="BTC"
+        loggedIn={true}
+    />)
+    .add('Buy Book', () => <OrderFormContainer
         askPrice={0.25}
         bidPrice={0.29}
         totalCurrBalance={10000}
@@ -58,6 +69,17 @@ storiesOf('Order Form', module)
         currency="XRP"
         pair="BTC"
         loggedIn={true}
+    />);
+
+
+storiesOf('Coin Searcher', module)
+    .add('Loading', () => <CoinSearchContainer
+        coinsList={coinsList.list}
+        loading={true}
+    />)
+    .add('Not Loading', () => <CoinSearchContainer
+        coinsList={coinsList.list}
+        loading={false}
     />);
 
 

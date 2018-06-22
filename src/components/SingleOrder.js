@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
+import {boundDecimal} from "../utils/services";
+import PropTypes from 'prop-types';
 
 class SingleOrder extends React.Component {
     render() {
         const order = this.props.order;
         return (
             <li className="not-heading">
+                <span style={{width: 'auto'}}>{this.props.index+1}</span>
                 <span>
-                    {Math.floor(parseFloat(order.amount) * parseFloat(order.price) * Math.pow(10, this.props.decimalPoints)) / Math.pow(10, this.props.decimalPoints)}
+                    {boundDecimal(parseFloat(order.amount) * parseFloat(order.price), this.props.decimalPoints)}
                 </span>
                 <span>
-                    {Math.floor(order.amount * Math.pow(10, this.props.decimalPoints)) / Math.pow(10, this.props.decimalPoints)}
+                    {boundDecimal(order.amount, this.props.decimalPoints)}
                 </span>
                 <span className="price">
-                    {Math.floor(order.price * Math.pow(10, this.props.decimalPoints)) / Math.pow(10, this.props.decimalPoints)}
+                    {boundDecimal(order.price, this.props.decimalPoints)}
                 </span>
             </li>
         )
@@ -20,7 +23,7 @@ class SingleOrder extends React.Component {
 }
 
 SingleOrder.propTypes = {
-    //myProps = React.PropTypes.string.isRequired
+    order: PropTypes.object.isRequired
 }
 
 export default SingleOrder;

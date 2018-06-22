@@ -6,8 +6,8 @@ class OrderBook extends React.Component {
     render() {
         const self = this;
         return (
-            <div style={{textAlign: 'center', width: '350px'}} className={this.props.bookName}>
-                <div style={{textAlign: 'center', width: '350px', height: '400px', overflowY: 'scroll'}} className="pt-card pt-elevation-1 pt-dark">
+            <div className={this.props.bookName + " order-book"}>
+                <div className="pt-card pt-elevation-1 pt-dark">
                     <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>{this.props.bookName}</h5>
                     {
                         this.props.loading &&
@@ -27,6 +27,7 @@ class OrderBook extends React.Component {
                         <div className="list-container">
                             <ul className="pt-list-unstyled">
                                 <li className="heading" style={{display: 'flex', justifyContent: 'space-between', margin: '10px auto'}}>
+                                    <span style={{width: 'auto'}}>#</span>
                                     <span>Total ({this.props.pair})</span>
                                     <span>Amount ({this.props.currency})</span>
                                     <span>Price ({this.props.pair})</span>
@@ -38,6 +39,7 @@ class OrderBook extends React.Component {
                                             <SingleOrder
                                                 decimalPoints={self.props.decimalPoints}
                                                 key={index}
+                                                index={index}
                                                 order={order}
                                             />)
                                 }
