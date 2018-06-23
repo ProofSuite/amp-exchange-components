@@ -1,8 +1,10 @@
 # amp-exchange-components
 React components for the decentralized exchange view
 ### Components
-- [OrderBook](src/components/OrderBook.js) 
-- [OrderForm](src/components/OrderForm.js)
+- [Order Book](src/containers/OrderBookContainer.js) 
+- [Order Form](src/containers/OrderFormContainer.js) 
+- [Trade History](src/containers/TradeHistoryContainer.js) 
+- [Coin Searcher](src/containers/CoinSearcherContainer.js)
 ### Installation
 - Install dependencies
 ```bash
