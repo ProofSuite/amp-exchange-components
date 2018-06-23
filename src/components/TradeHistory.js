@@ -44,7 +44,7 @@ class TradeHistory extends React.Component {
 }
 
 TradeHistory.propTypes = {
-    bookName: PropTypes.string.isRequired,
+    tradeHistory: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     decimalPoints: PropTypes.number
 }

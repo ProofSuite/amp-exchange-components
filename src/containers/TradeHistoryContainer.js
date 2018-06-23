@@ -9,15 +9,16 @@ class TradeHistoryContainer extends React.Component {
             <TradeHistory
                 loading={this.props.loading}
                 tradeHistory={this.props.tradeHistory}
+                decimalPoints={this.props.decimalPoints}
             />
         )
     }
 }
 
 TradeHistoryContainer.propTypes = {
-    // bookName: PropTypes.string.isRequired,
-    // loading: PropTypes.bool.isRequired,
-    // decimalPoints: PropTypes.number
+    tradeHistory: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
+    decimalPoints: PropTypes.number
 }
 TradeHistoryContainer.defaultProps = {
     loading: false,

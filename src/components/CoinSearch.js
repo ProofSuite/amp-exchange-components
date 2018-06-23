@@ -82,31 +82,17 @@ class CoinSearch extends React.Component {
                             !this.props.loading &&
                             filteredCoins.sort((a, b) => sorter(a, b, state.sortOrder, state.filterName)).filter((coin) => filterer(state.selectedTabId === "starred", coin, "starred", true)).map(function (coin, index) {
                                 return (
-                                    <tr key={index}>
-                                        <td style={{width: '50px'}}>
-                                            <Icon icon={coin.starred ? 'star' : 'star-empty'} onClick={() => self.props.toggleStar(coin.name)} />
-                                        </td>
-                                        <td>{coin.pair}</td>
-                                        <td>{coin.name}</td>
-                                        <td>{coin.symbol}</td>
-                                        <td>{boundDecimal(coin.lastPrice, self.props.decimalPoints)}</td>
-                                        <td style={parseFloat(coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(coin.change, self.props.decimalPoints)}</td>
-                                        <td>{boundDecimal(coin.high, self.props.decimalPoints)}</td>
-                                        <td>{boundDecimal(coin.low, self.props.decimalPoints)}</td>
-                                        <td>{boundDecimal(coin.volume, self.props.decimalPoints)}</td>
-                                    </tr>
+                                    <CoinRow
+                                        key={index}
+                                        props={{index, coin, decimalPoints: self.props.decimalPoints, toggleStar: self.props.toggleStar}}
+                                    />
                                 )
                             })
                         }
                         {
                             !this.props.loading &&
                             filteredCoins.sort((a, b) => sorter(a, b, state.sortOrder, state.filterName)).filter((coin) => filterer(state.selectedTabId === "starred", coin, "starred", true)).length === 0 &&
-                            <tr>
-                                <td style={{textAlign: 'center'}} colSpan={9}>
-                                    <Icon style={{color: '#f2b824'}} icon="issue"/>&nbsp;
-                                     No result found.
-                                </td>
-                            </tr>
+                                <NotFound />
                         }
                         </tbody>
 
@@ -129,13 +115,29 @@ CoinSearch.defaultProps = {
     loading: false
 }
 
-const cellRenderer = (rowIndex) => {
-    console.log(rowIndex)
-    return <Cell>{`$${(rowIndex * 10).toFixed(2)}`}</Cell>
-};
 
-// const cellRenderer = (coinsList, rowIndex) => {
-//     console.log(coinsList, rowIndex)
-//     return  <Cell>{'coin.name'}</Cell>
-// };
+const NotFound = () => (
+    <tr>
+        <td style={{textAlign: 'center'}} colSpan={9}>
+            <Icon style={{color: '#f2b824'}} icon="issue"/>&nbsp;
+            No result found.
+        </td>
+    </tr>
+);
+const CoinRow = ({props}) => (
+    <tr key={props.index}>
+        <td style={{width: '50px'}}>
+            <Icon icon={props.coin.starred ? 'star' : 'star-empty'} onClick={() => props.toggleStar(props.coin.name)} />
+        </td>
+        <td>{props.coin.pair}</td>
+        <td>{props.coin.name}</td>
+        <td>{props.coin.symbol}</td>
+        <td>{boundDecimal(props.coin.lastPrice, props.decimalPoints)}</td>
+        <td style={parseFloat(props.coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(props.coin.change, props.decimalPoints)}</td>
+        <td>{boundDecimal(props.coin.high, props.decimalPoints)}</td>
+        <td>{boundDecimal(props.coin.low, props.decimalPoints)}</td>
+        <td>{boundDecimal(props.coin.volume, props.decimalPoints)}</td>
+    </tr>
+);
+
 export default CoinSearch;
