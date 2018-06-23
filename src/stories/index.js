@@ -6,9 +6,10 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
-import { OrderBookContainer, OrderFormContainer, CoinSearchContainer } from "../containers";
+import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer } from "../containers";
 import * as orderList from "../ordersList.json";
 import * as coinsList from "../coinsList.json";
+import * as tradeHistory from "../tradeHistory.json";
 
 import '../App.css';
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -79,6 +80,17 @@ storiesOf('Coin Searcher', module)
     />)
     .add('Not Loading', () => <CoinSearchContainer
         coinsList={coinsList.list}
+        loading={false}
+    />);
+
+
+storiesOf('Trade History', module)
+    .add('Loading', () => <TradeHistoryContainer
+        tradeHistory={tradeHistory.list}
+        loading={true}
+    />)
+    .add('Not Loading', () => <TradeHistoryContainer
+        tradeHistory={tradeHistory.list}
         loading={false}
     />);
 

@@ -7,11 +7,11 @@ class SingleOrder extends React.Component {
         const order = this.props.order;
         return (
             <li className="not-heading">
-                <span style={{width: 'auto'}}>{this.props.index+1}</span>
-                <span>
+                <span className="index">{this.props.index+1}</span>
+                <span className="total">
                     {boundDecimal(parseFloat(order.amount) * parseFloat(order.price), this.props.decimalPoints)}
                 </span>
-                <span>
+                <span  className="amount">
                     {boundDecimal(order.amount, this.props.decimalPoints)}
                 </span>
                 <span className="price">

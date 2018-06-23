@@ -18,11 +18,11 @@ class OrderBook extends React.Component {
                         !this.props.loading &&
                         <div className="list-container">
                             <ul className="pt-list-unstyled">
-                                <li className="heading" style={{display: 'flex', justifyContent: 'space-between', margin: '10px auto'}}>
-                                    <span style={{width: 'auto'}}>#</span>
-                                    <span>Total ({this.props.pair})</span>
-                                    <span>Amount ({this.props.currency})</span>
-                                    <span>Price ({this.props.pair})</span>
+                                <li className="heading" style={{margin: '10px auto'}}>
+                                    <span  className="index">#</span>
+                                    <span  className="total">Total ({this.props.pair})</span>
+                                    <span  className="amount">Amount ({this.props.currency})</span>
+                                    <span  className="price" style={{color: "#fff"}}>Price ({this.props.pair})</span>
                                 </li>
                                 {
                                     [].concat(this.props.orderList.list)

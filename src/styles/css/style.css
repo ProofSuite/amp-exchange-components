@@ -19,40 +19,67 @@ p, input {
 
 .order-book {
   text-align: center;
-  width: 350px;
+  width: 420px;
   height: 400px; }
   .order-book .pt-card {
     text-align: center;
-    width: 350px;
+    width: 100%;
     height: 100%;
     overflow-y: scroll; }
-  .order-book li {
+  .order-book ul {
+    text-align: left; }
+    .order-book ul li {
+      padding: 2px 8px;
+      font-size: 13px;
+      width: 100%; }
+      .order-book ul li span {
+        float: left;
+        margin-right: 15px;
+        text-align: left; }
+      .order-book ul li span.index {
+        min-width: 15px; }
+      .order-book ul li span.price, .order-book ul li span.amount, .order-book ul li span.total {
+        min-width: 90px; }
+    .order-book ul li.heading span {
+      font-weight: 600; }
+    .order-book ul li.not-heading {
+      cursor: pointer;
+      margin: 0px !important;
+      border: 1px transparent;
+      border-radius: 2px;
+      display: inline-block; }
+    .order-book ul li.not-heading:hover {
+      background-color: #5b656d;
+      position: relative;
+      top: -2px;
+      right: -2px;
+      bottom: -2px;
+      left: -2px;
+      z-index: 1;
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 0 0 1px #31404c, -1px 10px 4px rgba(16, 22, 26, 0.1), 1px 18px 24px rgba(16, 22, 26, 0.2);
+      box-shadow: inset 0 0 0 1px #31404c, -1px 5px 4px rgba(16, 22, 26, 0.1), 1px 7px 24px rgba(16, 22, 26, 0.2); }
+      .order-book ul li.not-heading:hover span {
+        font-weight: bold; }
+
+.trade-history {
+  width: 410px; }
+  .trade-history li {
     padding: 2px 8px;
-    font-size: 13px; }
-    .order-book li span {
-      width: 200px; }
-  .order-book li.heading span {
-    font-weight: 600; }
-  .order-book li.not-heading {
-    cursor: pointer;
-    margin: 0px !important;
-    border: 1px transparent;
-    border-radius: 2px;
-    display: flex;
-    justify-content: space-between; }
-  .order-book li.not-heading:hover {
-    background-color: #5b656d;
-    position: relative;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    z-index: 1;
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 0 1px #31404c, -1px 10px 4px rgba(16, 22, 26, 0.1), 1px 18px 24px rgba(16, 22, 26, 0.2);
-    box-shadow: inset 0 0 0 1px #31404c, -1px 5px 4px rgba(16, 22, 26, 0.1), 1px 7px 24px rgba(16, 22, 26, 0.2); }
-    .order-book li.not-heading:hover span {
-      font-weight: bold; }
+    font-size: 13px;
+    width: 100%; }
+    .trade-history li span {
+      float: left;
+      margin-right: 15px;
+      text-align: left; }
+    .trade-history li span.index {
+      min-width: 15px; }
+    .trade-history li span.time {
+      min-width: 90px; }
+    .trade-history li span.type {
+      min-width: 35px; }
+    .trade-history li span.price, .trade-history li span.amount, .trade-history li span.total {
+      min-width: 60px !important; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

@@ -29,49 +29,84 @@ p, input {
 }
 .order-book {
   text-align: center;
-  width: 350px;
+  width: 420px;
   height: 400px;
   .pt-card {
     text-align: center;
-    width: 350px;
+    width: 100%;
     height: 100%;
     overflow-y: scroll;
   }
+  ul {
+    text-align: left;
+    li {
+      padding: 2px 8px;
+      font-size: 13px;
+      width: 100%;
+      span {
+        float: left;
+        margin-right: 15px;
+        text-align: left;
+      }
+      span.index {
+        min-width: 15px;
+      }
+      span.price, span.amount, span.total {
+        min-width: 90px;
+      }
+    }
+    li.heading {
+      span {
+        font-weight: 600;
+      }
+    }
+    li.not-heading {
+      cursor: pointer;
+      margin: 0px !important;
+      border: 1px transparent;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    li.not-heading:hover {
+      background-color: #5b656d;
+      span {
+        font-weight: bold;
+      }
+      position: relative;
+      top: -2px;
+      right: -2px;
+      bottom: -2px;
+      left: -2px;
+      z-index: 1;
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 0 0 1px rgb(49, 64, 76), -1px 10px 4px rgba(16, 22, 26, 0.1), 1px 18px 24px rgba(16, 22, 26, 0.2);
+      box-shadow: inset 0 0 0 1px rgb(49, 64, 76), -1px 5px 4px rgba(16, 22, 26, 0.1), 1px 7px 24px rgba(16, 22, 26, 0.2);
+    }
+  }
+}
+.trade-history {
+  width: 410px;
   li {
     padding: 2px 8px;
     font-size: 13px;
-
+    width: 100%;
     span {
-      width: 200px;
+      float: left;
+      margin-right: 15px;
+      text-align: left;
     }
-  }
-  li.heading {
-    span {
-      font-weight: 600;
+    span.index {
+      min-width: 15px;
     }
-  }
-  li.not-heading {
-    cursor: pointer;
-    margin: 0px !important;
-    border: 1px transparent;
-    border-radius: 2px;
-    display: flex;
-    justify-content: space-between;
-  }
-  li.not-heading:hover {
-    background-color: #5b656d;
-    span {
-      font-weight: bold;
+    span.time {
+      min-width: 90px;
     }
-    position: relative;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    z-index: 1;
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 0 1px rgb(49, 64, 76), -1px 10px 4px rgba(16, 22, 26, 0.1), 1px 18px 24px rgba(16, 22, 26, 0.2);
-    box-shadow: inset 0 0 0 1px rgb(49, 64, 76), -1px 5px 4px rgba(16, 22, 26, 0.1), 1px 7px 24px rgba(16, 22, 26, 0.2);
+    span.type {
+      min-width: 35px;
+    }
+    span.price, span.amount, span.total {
+      min-width: 60px !important;
+    }
   }
 }
 input[type=number]::-webkit-inner-spin-button,
