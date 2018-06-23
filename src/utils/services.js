@@ -10,6 +10,13 @@ export function getColumnFromTable(table, colName) {
     })
 }
 
+export function filterer (filter, coin, wrt, filterValue) {
+    if(filter) {
+        return coin[wrt] === filterValue;
+    }
+    return true;
+}
+
 export function sorter(a, b, order, wrt) {
     let first, second;
     if(typeof a[wrt] === "string") {

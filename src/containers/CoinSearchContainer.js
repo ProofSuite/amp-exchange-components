@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import { CoinSearch } from "../components";
 import PropTypes from 'prop-types';
+import { Icon, Tabs, Tab } from "@blueprintjs/core";
 
 
 class CoinSearchContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            coinsList: this.props.coinsList,
+            coinsList: this.props.coinsList.btc,
             searchFilter: '',
-            filteredCoins: this.props.coinsList,
+            filteredCoins: this.props.coinsList.btc,
             filterName: 'name',
             sortOrder: 'asc',
+            selectedTabId: 'btc',
             orderChanged: false
         }
     }
@@ -28,7 +30,7 @@ class CoinSearchContainer extends React.Component {
     onChangeSearchFilter = (e) => {
         let X;
         if(e.target.value){
-            X = this.props.coinsList.filter(function (coin) {
+            X = this.state.coinsList.filter(function (coin) {
                 return coin.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1;
             })
         }
@@ -61,17 +63,57 @@ class CoinSearchContainer extends React.Component {
             sortOrder: value,
         })
     }
+    changeTab = (tabId) => {
+        let filteredCoins;
+        if (tabId !== "starred") {
+            filteredCoins = this.props.coinsList[tabId];
+        }
+        else {
+            filteredCoins = this.props.coinsList.btc;
+        }
+
+        this.setState({
+            selectedTabId: tabId,
+            filteredCoins: filteredCoins
+        })
+    }
     render() {
         return (
             <div className="coin-searcher">
-                <CoinSearch
-                    state={this.state}
-                    loading={this.props.loading}
-                    toggleStar={this.toggleStar}
-                    onChangeSearchFilter={this.onChangeSearchFilter}
-                    onChangeFilterName={this.onChangeFilterName}
-                    onChangeSortOrder={this.onChangeSortOrder}
-                />
+                <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                    <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
+                    <Tab id="btc" title="BTC Market" panel={
+                        <CoinSearch
+                            state={this.state}
+                            loading={this.props.loading}
+                            toggleStar={this.toggleStar}
+                            onChangeSearchFilter={this.onChangeSearchFilter}
+                            onChangeFilterName={this.onChangeFilterName}
+                            onChangeSortOrder={this.onChangeSortOrder}
+                        />
+                    } />
+                    <Tab id="usdt" title="USDT Market" panel={
+                        <CoinSearch
+                            state={this.state}
+                            loading={this.props.loading}
+                            toggleStar={this.toggleStar}
+                            onChangeSearchFilter={this.onChangeSearchFilter}
+                            onChangeFilterName={this.onChangeFilterName}
+                            onChangeSortOrder={this.onChangeSortOrder}
+                        />
+                    } />
+                    <Tab id="starred" title={<Icon icon='star'/>} panel={
+                        <CoinSearch
+                            state={this.state}
+                            loading={this.props.loading}
+                            toggleStar={this.toggleStar}
+                            onChangeSearchFilter={this.onChangeSearchFilter}
+                            onChangeFilterName={this.onChangeFilterName}
+                            onChangeSortOrder={this.onChangeSortOrder}
+                        />
+                    } />
+                </Tabs>
+
             </div>
         )
     }
@@ -85,6 +127,4 @@ CoinSearchContainer.propTypes = {
 //     // decimalPoints: 7,
 //     // loading: false
 // }
-
-
 export default CoinSearchContainer;

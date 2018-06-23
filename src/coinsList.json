@@ -1,84 +1,184 @@
 {
-  "list": [
-    {
-      "name": "Bitcoin",
-      "symbol": "BTC",
-      "lastPrice": 0.1001,
-      "change": "2.3",
-      "high": 0.100012,
-      "low": 0.0063342,
-      "volume": 123230.00,
-      "starred": false
-    },
-    {
-      "name": "Ethereum",
-      "symbol": "ETH",
-      "lastPrice": 0.02001,
-      "change": "-2.3",
-      "high": 0.020012,
-      "low": 0.05502,
-      "volume": 122323,
-      "starred": true
-    },
-    {
-      "name": "Ripple",
-      "symbol": "BTC",
-      "lastPrice": 0.00301,
-      "change": "-2.3",
-      "high": 0.00012,
-      "low": 0.0502,
-      "volume": 32,
-      "starred": false
-    },
-    {
-      "name": "EOS",
-      "symbol": "ETH",
-      "lastPrice": 20.0001,
-      "change": "2.3",
-      "high": 0.003012,
-      "low": 0.00321542,
-      "volume": 322,
-      "starred": false
-    },
-    {
-      "name": "ZCash",
-      "symbol": "BTC",
-      "lastPrice": 3.0001,
-      "change": "2.3",
-      "high": 0.000412,
-      "low": 0.0021322,
-      "volume": 212,
-      "starred": false
-    },
-    {
-      "name": "Gold",
-      "symbol": "ETH",
-      "lastPrice": 0.0091,
-      "change": "2.3",
-      "high": 0.200012,
-      "low": 0.03202,
-      "volume": 3212,
-      "starred": true
-    },
-    {
-      "name": "Monero",
-      "symbol": "BTC",
-      "lastPrice": 0.110001,
-      "change": "-0.3",
-      "high": 0.030012,
-      "low": 0.002,
-      "volume": 12,
-      "starred": false
-    },
-    {
-      "name": "Thether",
-      "symbol": "ETH",
-      "lastPrice": 0.012001,
-      "change": "2.3",
-      "high": 0.0304012,
-      "low": 0.023202,
-      "volume": 90,
-      "starred": true
-    }
-  ]
+  "list": {
+    "btc": [
+      {
+        "name": "Bitcoin",
+        "symbol": "BTC",
+        "pair": "BTC/BTC",
+        "lastPrice": 0.1001,
+        "change": "2.3",
+        "high": 0.100012,
+        "low": 0.0063342,
+        "volume": 123230.00,
+        "starred": false
+      },
+      {
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "pair": "ETH/BTC",
+        "lastPrice": 0.02001,
+        "change": "-2.3",
+        "high": 0.020012,
+        "low": 0.05502,
+        "volume": 122323,
+        "starred": true
+      },
+      {
+        "name": "Ripple",
+        "symbol": "XRP",
+        "pair": "XRP/BTC",
+        "lastPrice": 0.00301,
+        "change": "-2.3",
+        "high": 0.00012,
+        "low": 0.0502,
+        "volume": 32,
+        "starred": false
+      },
+      {
+        "name": "EOS",
+        "symbol": "EOS",
+        "pair": "EOS/BTC",
+        "lastPrice": 20.0001,
+        "change": "2.3",
+        "high": 0.003012,
+        "low": 0.00321542,
+        "volume": 322,
+        "starred": false
+      },
+      {
+        "name": "ZCash",
+        "symbol": "ZCash",
+        "pair": "ZCash/BTC",
+        "lastPrice": 3.0001,
+        "change": "2.3",
+        "high": 0.000412,
+        "low": 0.0021322,
+        "volume": 212,
+        "starred": false
+      },
+      {
+        "name": "Gold",
+        "symbol": "GLD",
+        "pair": "GLD/BTC",
+        "lastPrice": 0.0091,
+        "change": "2.3",
+        "high": 0.200012,
+        "low": 0.03202,
+        "volume": 3212,
+        "starred": true
+      },
+      {
+        "name": "Monero",
+        "symbol": "MNR",
+        "pair": "MNR/BTC",
+        "lastPrice": 0.110001,
+        "change": "-0.3",
+        "high": 0.030012,
+        "low": 0.002,
+        "volume": 12,
+        "starred": false
+      },
+      {
+        "name": "Thether",
+        "symbol": "USDT",
+        "pair": "USDT/BTC",
+        "lastPrice": 0.012001,
+        "change": "2.3",
+        "high": 0.0304012,
+        "low": 0.023202,
+        "volume": 90,
+        "starred": true
+      }
+    ],
+    "usdt": [
+      {
+        "name": "Bitcoin",
+        "symbol": "BTC",
+        "pair": "BTC/USDT",
+        "lastPrice": 0.1001,
+        "change": "2.3",
+        "high": 0.100012,
+        "low": 0.0063342,
+        "volume": 123230.00,
+        "starred": false
+      },
+      {
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "pair": "ETH/USDT",
+        "lastPrice": 0.02001,
+        "change": "-2.3",
+        "high": 0.020012,
+        "low": 0.05502,
+        "volume": 122323,
+        "starred": true
+      },
+      {
+        "name": "Ripple",
+        "symbol": "XRP",
+        "pair": "XRP/USDT",
+        "lastPrice": 0.00301,
+        "change": "-2.3",
+        "high": 0.00012,
+        "low": 0.0502,
+        "volume": 32,
+        "starred": false
+      },
+      {
+        "name": "EOS",
+        "symbol": "EOS",
+        "pair": "EOS/USDT",
+        "lastPrice": 20.0001,
+        "change": "2.3",
+        "high": 0.003012,
+        "low": 0.00321542,
+        "volume": 322,
+        "starred": false
+      },
+      {
+        "name": "ZCash",
+        "symbol": "ZCash",
+        "pair": "ZCash/USDT",
+        "lastPrice": 3.0001,
+        "change": "2.3",
+        "high": 0.000412,
+        "low": 0.0021322,
+        "volume": 212,
+        "starred": false
+      },
+      {
+        "name": "Gold",
+        "symbol": "GLD",
+        "pair": "GLD/USDT",
+        "lastPrice": 0.0091,
+        "change": "2.3",
+        "high": 0.200012,
+        "low": 0.03202,
+        "volume": 3212,
+        "starred": true
+      },
+      {
+        "name": "Monero",
+        "symbol": "MNR",
+        "pair": "MNR/USDT",
+        "lastPrice": 0.110001,
+        "change": "-0.3",
+        "high": 0.030012,
+        "low": 0.002,
+        "volume": 12,
+        "starred": false
+      },
+      {
+        "name": "Thether",
+        "symbol": "USDT",
+        "pair": "USDT/USDT",
+        "lastPrice": 0.012001,
+        "change": "2.3",
+        "high": 0.0304012,
+        "low": 0.023202,
+        "volume": 90,
+        "starred": true
+      }
+    ]
+  }
 }

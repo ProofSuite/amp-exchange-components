@@ -1,8 +1,11 @@
 $primary: #fff;
-$secondary: #728089;
+$secondary: #137cbd;
+$gray: #728089;
 $green: #00a45b;
 $red: #f75535;
-
+p, input {
+  font-size: 13px;
+}
 .loading-overlay {
   width: 100%;
   background-color: #b7b2b22b;
@@ -10,6 +13,9 @@ $red: #f75535;
   display: flex;
   justify-content: center;
   align-items: center;
+  svg path.pt-spinner-track {
+    stroke: rgba(16, 22, 26, 0.5) !important;
+  }
 }
 .Sell {
   .price {
@@ -80,12 +86,13 @@ label {
   span.curr-name {
     position: absolute;
     top: 0;
-    color: $secondary;
+    color: $gray;
     right: 10px;
     line-height: 2;
   }
 }
 .order-form {
+  font-size: 13px;
   form {
     .radio-buttons {
     margin-top: 10px;
@@ -111,7 +118,7 @@ label {
       }
     }
     .active-box {
-      box-shadow: 0 0 3px 2px #137cbd, 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
+      box-shadow: 0 0 3px 2px $secondary, 0 0 0 1px $secondary, 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
       border-radius: 3px;
       border: 1px solid transparent;
 
@@ -127,22 +134,31 @@ label {
   padding: 10px;
   width: 800px;
   background-color: #31404c;
-  .search-bar {
-    display: flex;
-    justify-content: flex-end;
-    input {
+  .pt-tab-list {
+    .pt-tab {
       color: $primary;
-      background-color: #27343d;
-      width: 230px;
-      height: 35px;
+      font-weight: 600;
     }
+    .pt-tab:hover {
+      color: $secondary;
+    }
+    .pt-tab:focus {
+        outline: none;
+      }
   }
+  input {
+     color: $primary;
+     background-color: #27343d;
+     width: 230px;
+     height: 35px;
+   }
   table {
     width: 100%;
     background-color: #30404d;
     padding: 10px;
     tr {
       th, td {
+        font-size: 13px;
         box-shadow: inset 0px 1px 0 0 rgba(16, 22, 26, 0.15) !important;
         color: #fff;
         text-align: left;
@@ -152,9 +168,18 @@ label {
         cursor: pointer;
         span {
           svg {
+            color: $secondary;
             margin-top: 2px;
           }
         }
+      }
+    }
+    tr.loading-row:hover {
+      background-color: transparent;
+      position: inherit;
+      box-shadow: none;
+      td {
+        background-color: transparent !important;
       }
     }
     tbody {
