@@ -138,6 +138,9 @@ label {
     .pt-tab {
       color: $primary;
       font-weight: 600;
+      svg {
+        margin-top: 6px;
+      }
     }
     .pt-tab:hover {
       color: $secondary;

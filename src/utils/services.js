@@ -4,10 +4,23 @@ export function boundDecimal(number, range) {
     return Math.floor(number * Math.pow(10, range)) / Math.pow(10, range);
 }
 
-export function getColumnFromTable(table, colName) {
-    return table.map(function (row) {
-        return row[colName];
+export function getObjectFromProperty(array, prop, value) {
+    let foundObject;
+    array.map(function(obj) {
+        if(obj[prop] === value){
+            foundObject = obj;
+        }
     })
+    if (foundObject){
+        return foundObject;
+    }
+    else {
+        return false;
+    }
+
+    // return table.map(function (row) {
+    //     return row[colName];
+    // })
 }
 
 export function filterer (filter, coin, wrt, filterValue) {

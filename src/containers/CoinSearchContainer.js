@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { CoinSearch } from "../components";
 import PropTypes from 'prop-types';
 import { Icon, Tabs, Tab } from "@blueprintjs/core";
-
+import { getObjectFromProperty } from "../utils/services";
 
 class CoinSearchContainer extends React.Component {
     constructor(props) {
@@ -18,9 +18,12 @@ class CoinSearchContainer extends React.Component {
         }
     }
 
-    toggleStar = (index) => {
-        let coin = this.state.filteredCoins[index];
-        coin.starred = !coin.starred;
+    toggleStar = (name) => {
+        let coin = getObjectFromProperty(this.state.filteredCoins, 'name', name);
+        console.log(coin)
+        if(coin) {
+            coin.starred = !coin.starred;
+        }
         let filteredCoins = this.state.filteredCoins;
         this.setState({
             filteredCoins: filteredCoins
@@ -121,7 +124,7 @@ class CoinSearchContainer extends React.Component {
 
 CoinSearchContainer.propTypes = {
     loading: PropTypes.bool.isRequired,
-    coinsList: PropTypes.array.isRequired
+    coinsList: PropTypes.object.isRequired
 }
 // CoinSearchContainer.defaultProps = {
 //     // decimalPoints: 7,

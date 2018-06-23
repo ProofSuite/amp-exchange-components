@@ -108,6 +108,8 @@ label {
   .coin-searcher .pt-tab-list .pt-tab {
     color: #fff;
     font-weight: 600; }
+    .coin-searcher .pt-tab-list .pt-tab svg {
+      margin-top: 6px; }
   .coin-searcher .pt-tab-list .pt-tab:hover {
     color: #137cbd; }
   .coin-searcher .pt-tab-list .pt-tab:focus {
