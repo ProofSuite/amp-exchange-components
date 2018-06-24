@@ -17,10 +17,6 @@ export function getObjectFromProperty(array, prop, value) {
     else {
         return false;
     }
-
-    // return table.map(function (row) {
-    //     return row[colName];
-    // })
 }
 
 export function filterer (filter, coin, wrt, filterValue) {

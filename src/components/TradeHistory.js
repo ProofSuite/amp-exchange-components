@@ -56,21 +56,20 @@ TradeHistory.defaultProps = {
 export default TradeHistory;
 
 
-const Row = (props) => (
-
+const Row = ({props}) => (
     <li className="not-heading">
-        <span className="index">{props.props.index+1}</span>
+        <span className="index">{props.index+1}</span>
         <span className="time">
-            {new Date(props.props.order.time).toLocaleDateString().replace(/\//g, '-')}
+            {new Date(props.order.time).toLocaleDateString().replace(/\//g, '-')}
         </span>
-        <span className="type" style={props.props.order.type === "sell" ? {color: '#f75535'} : {color: '#00a45b'}}>
-            {props.props.order.type}
+        <span className="type" style={props.order.type === "sell" ? {color: '#f75535'} : {color: '#00a45b'}}>
+            {props.order.type}
         </span>
         <span className="amount">
-            {boundDecimal(props.props.order.amount, props.props.decimalPoints)}
+            {boundDecimal(props.order.amount, props.decimalPoints)}
         </span >
         <span className="price">
-            {boundDecimal(props.props.order.price, props.props.decimalPoints)}
+            {boundDecimal(props.order.price, props.decimalPoints)}
         </span>
     </li>
 );

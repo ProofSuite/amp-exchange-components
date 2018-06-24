@@ -7,9 +7,10 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer } from "../containers";
-import * as orderList from "../ordersList.json";
-import * as coinsList from "../coinsList.json";
-import * as tradeHistory from "../tradeHistory.json";
+import SimpleChart from "../components/SimpleChart";
+import * as orderList from "../jsons/ordersList.json";
+import * as coinsList from "../jsons/coinsList.json";
+import * as tradeHistory from "../jsons/tradeHistory.json";
 
 import '../App.css';
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -72,7 +73,6 @@ storiesOf('Order Form', module)
         loggedIn={true}
     />);
 
-
 storiesOf('Coin Searcher', module)
     .add('Loading', () => <CoinSearchContainer
         coinsList={coinsList.list}
@@ -83,7 +83,6 @@ storiesOf('Coin Searcher', module)
         loading={false}
     />);
 
-
 storiesOf('Trade History', module)
     .add('Loading', () => <TradeHistoryContainer
         tradeHistory={tradeHistory.list}
@@ -92,6 +91,10 @@ storiesOf('Trade History', module)
     .add('Not Loading', () => <TradeHistoryContainer
         tradeHistory={tradeHistory.list}
         loading={false}
+    />);
+
+storiesOf('Simple Chart', module)
+    .add('Loading', () => <SimpleChart
     />);
 
 

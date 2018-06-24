@@ -6,7 +6,7 @@ import "./styles/css/style.css";
 
 import "@blueprintjs/table/lib/css/table.css";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer } from "./containers";
-import * as coinsList from "./coinsList.json";
+import * as coinsList from "./jsons/coinsList.json";
 
 class App extends Component {
   render() {
