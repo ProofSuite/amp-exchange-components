@@ -4,6 +4,7 @@ import SingleOrder from "./SingleOrder";
 import CoinSearch from "./CoinSearch";
 import Loading from "./Loading";
 import TradeHistory from "./TradeHistory";
+import DepthChart from "./DepthChart";
 
 export {
     OrderBook,
@@ -11,5 +12,6 @@ export {
     SingleOrder,
     CoinSearch,
     Loading,
-    TradeHistory
+    TradeHistory,
+    DepthChart
 }

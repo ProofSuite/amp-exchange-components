@@ -1,19 +1,28 @@
 const fs = require('fs-extra');
 const path = require('path');
 const CMCData = require('../jsons/CMCData.json');
+const bidAsk = require('../jsons/bidAsk.json');
 
 
 
-const orderList = path.resolve(__dirname, 'ordersList.json');
-const tradeHistory = path.resolve(__dirname, 'tradeHistory.json');
-const coinsList = path.resolve(__dirname, 'coinsList.json');
+
+const orderList = path.join(__dirname, '../jsons/', 'ordersList.json');
+const tradeHistory = path.join(__dirname, '../jsons/', 'tradeHistory.json');
+const coinsList = path.join(__dirname, '../jsons/', 'coinsList.json');
+const sellOrders = path.join(__dirname, '../jsons/', 'sellOrders.json');
+const bidAsks = path.join(__dirname, '../jsons/', 'bidAsk.json');
 fs.removeSync(orderList);
 fs.removeSync(tradeHistory);
 fs.removeSync(coinsList);
+fs.removeSync(sellOrders);
+fs.removeSync(bidAsks);
 
-fs.writeFile("./jsons/ordersList.json", orderListJSON());
-fs.writeFile("./jsons/tradeHistory.json", tradeHistoryJSON());
-fs.writeFile("./jsons/coinsList.json", coinsListJSON());
+
+fs.writeFile(path.join(__dirname, '../jsons/', 'ordersList.json'), orderListJSON());
+fs.writeFile(path.join(__dirname, '../jsons/', 'tradeHistory.json'), tradeHistoryJSON());
+fs.writeFile(path.join(__dirname, '../jsons/', 'coinsList.json'), coinsListJSON());
+fs.writeFile(path.join(__dirname, '../jsons/', 'sellOrders.json'), sellOrdersJSON());
+fs.writeFile(path.join(__dirname, '../jsons/', 'bidAsks.json'), bidAskJSON());
 
 
 function orderListJSON () {
@@ -56,8 +65,6 @@ function tradeHistoryJSON () {
     }
     return JSON.stringify(json);
 }
-
-coinsListJSON();
 
 function coinsListJSON() {
     var json = {
@@ -124,6 +131,91 @@ function coinsListJSON() {
             volume: 0,
             starred: false
         };
+    }
+    return JSON.stringify(json);
+}
+
+function sellOrdersJSON() {
+    var json = {
+        list: []
+    }
+    let sample = {x: 0, y: 0};
+    for (let i=0; i<50; i++){
+        sample.x = parseFloat((Math.random()*10).toFixed());
+        sample.y = parseFloat((Math.random()*1000).toFixed());
+        json.list.push(sample);
+        sample = {x: 0, y: 0};
+    }
+    return JSON.stringify(json);
+}
+
+function bidAskJSON() {
+
+    function processData(list, type, desc) {
+        // console.log(list, type, desc)
+
+        // Convert to data points
+        for(var i = 0; i < list.length; i++) {
+            list[i] = {
+                value: Number(list[i][0]),
+                volume: Number(list[i][1]),
+            }
+        }
+
+        // Sort list just in case
+        list.sort(function(a, b) {
+            if (a.value > b.value) {
+                return 1;
+            }
+            else if (a.value < b.value) {
+                return -1;
+            }
+            else {
+                return 0;
+            }
+        });
+
+        // Calculate cummulative volume
+        if (desc) {
+            for(var i = list.length - 1; i >= 0; i--) {
+                if (i < (list.length - 1)) {
+                    list[i].totalvolume = list[i+1].totalvolume + list[i].volume;
+                }
+                else {
+                    list[i].totalvolume = list[i].volume;
+                }
+                var dp = {};
+                dp["value"] = list[i].value;
+                dp[type + "volume"] = list[i].volume;
+                dp[type + "totalvolume"] = list[i].totalvolume;
+                res.unshift(dp);
+            }
+        }
+        else {
+            for(var i = 0; i < list.length; i++) {
+                if (i > 0) {
+                    list[i].totalvolume = list[i-1].totalvolume + list[i].volume;
+                }
+                else {
+                    list[i].totalvolume = list[i].volume;
+                }
+                var dp = {};
+                dp["value"] = list[i].value;
+                dp[type + "volume"] = list[i].volume;
+                dp[type + "totalvolume"] = list[i].totalvolume;
+                res.push(dp);
+            }
+        }
+
+    }
+
+    var res = [];
+    processData(bidAsk.bids, "bids", true);
+    processData(bidAsk.asks, "asks", false);
+
+    // console.log(res);
+    var json = {
+        list: res
     }
     return JSON.stringify(json);
 }

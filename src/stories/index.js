@@ -6,11 +6,14 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
-import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer } from "../containers";
-import SimpleChart from "../components/SimpleChart";
+import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer,
+    DepthChartContainer } from "../containers";
+
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
 import * as tradeHistory from "../jsons/tradeHistory.json";
+import * as sellOrders from "../jsons/sellOrders.json";
+import * as bidAsks from "../jsons/bidAsks.json";
 
 import '../App.css';
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -93,8 +96,16 @@ storiesOf('Trade History', module)
         loading={false}
     />);
 
-storiesOf('Simple Chart', module)
-    .add('Loading', () => <SimpleChart
+storiesOf('Depth Graph', module)
+    .add('Loading', () => <DepthChartContainer
+        data={bidAsks.list}
+        loading={true}
+        title="Price (BTC/USDT)"
+    />)
+    .add('Not Loading', () => <DepthChartContainer
+        data={bidAsks.list}
+        loading={false}
+        title="Price (BTC/USDT)"
     />);
 
 

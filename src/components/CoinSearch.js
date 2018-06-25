@@ -133,7 +133,7 @@ const CoinRow = ({props}) => (
         <td>{props.coin.name}</td>
         <td>{props.coin.symbol}</td>
         <td>{boundDecimal(props.coin.lastPrice, props.decimalPoints)}</td>
-        <td style={parseFloat(props.coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(props.coin.change, props.decimalPoints)}</td>
+        <td style={parseFloat(props.coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(props.coin.change, props.decimalPoints)}%</td>
         <td>{boundDecimal(props.coin.high, props.decimalPoints)}</td>
         <td>{boundDecimal(props.coin.low, props.decimalPoints)}</td>
         <td>{boundDecimal(props.coin.volume, props.decimalPoints)}</td>

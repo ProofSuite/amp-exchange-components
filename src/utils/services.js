@@ -18,6 +18,15 @@ export function getObjectFromProperty(array, prop, value) {
         return false;
     }
 }
+export function getArrayOfProps(arr, prop) {
+    let temp=[];
+    arr.map((item) => {
+        if(item[prop]) {
+            temp.push(item[prop]);
+        }
+    })
+    return temp;
+}
 
 export function filterer (filter, coin, wrt, filterValue) {
     if(filter) {
