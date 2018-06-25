@@ -7,35 +7,16 @@ class TradeHistory extends React.Component {
     render() {
         const self = this;
         return (
-            <div className="trade-history order-book">
-                <div className="pt-card pt-elevation-1 pt-dark">
-                    <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>Trade History</h5>
+            <div>
+                <div className="pt-dark">
                     {
-                        this.props.loading &&
-                        <Loading />
-                    }
-                    {
-                        !this.props.loading &&
-                        <div className="list-container">
-                            <ul className="pt-list-unstyled">
-                                <li className="heading" style={{margin: '10px auto'}}>
-                                    <span className="index">#</span>
-                                    <span className="time">Time</span>
-                                    <span className="type">Type</span>
-                                    <span className="amount">Amount</span>
-                                    <span className="price">Price</span>
-                                </li>
-                                {
-                                    this.props.tradeHistory
-                                        .sort((a, b) => a.time < b.time)
-                                        .map((order, index) =>
-                                            <Row
-                                                key={index}
-                                                props={{order, decimalPoints: self.props.decimalPoints, index}}
-                                            />)
-                                }
-                            </ul>
-                        </div>
+                        this.props.loading ?
+                            <Loading style={{height: '410px'}} height="410px" />
+                            :
+                            <HistroyList
+                                tradeHistory={this.props.tradeHistory}
+                                decimalPoints={this.props.decimalPoints}
+                            />
                     }
                 </div>
             </div>
@@ -55,6 +36,30 @@ TradeHistory.defaultProps = {
 
 export default TradeHistory;
 
+
+const HistroyList = ({tradeHistory, decimalPoints}) => (
+    <div className="list-container">
+        {console.log(tradeHistory, decimalPoints)}
+        <ul className="pt-list-unstyled">
+            <li className="heading" style={{margin: '10px auto'}}>
+                <span className="index">#</span>
+                <span className="time">Time</span>
+                <span className="type">Type</span>
+                <span className="amount">Amount</span>
+                <span className="price">Price</span>
+            </li>
+            {
+                tradeHistory
+                    .sort((a, b) => a.time < b.time)
+                    .map((order, index) =>
+                        <Row
+                            key={index}
+                            props={{order, decimalPoints: decimalPoints, index}}
+                        />)
+            }
+        </ul>
+    </div>
+);
 
 const Row = ({props}) => (
     <li className="not-heading">

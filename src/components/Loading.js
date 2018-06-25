@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Loading = () => (
-    <div className="loading-overlay">
+const Loading = ({height}) => (
+    <div className="loading-overlay" style={height? {height: height} : {}}>
         <div className="pt-spinner .pt-large">
             <div className="pt-spinner-svg-container">
                 <svg viewBox="0 0 100 100">

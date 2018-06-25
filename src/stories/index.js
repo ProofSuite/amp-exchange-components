@@ -91,8 +91,14 @@ storiesOf('Trade History', module)
         tradeHistory={tradeHistory.list}
         loading={true}
     />)
-    .add('Not Loading', () => <TradeHistoryContainer
+    .add('Not LoggedIn', () => <TradeHistoryContainer
         tradeHistory={tradeHistory.list}
+        loggedIn={false}
+        loading={false}
+    />)
+    .add('LoggedIn', () => <TradeHistoryContainer
+        tradeHistory={tradeHistory.list}
+        loggedIn={true}
         loading={false}
     />);
 

@@ -1,6 +1,9 @@
 p, input {
   font-size: 13px; }
 
+button.pt-button {
+  font-size: 16px; }
+
 .loading-overlay {
   width: 100%;
   background-color: #b7b2b22b;
@@ -10,6 +13,9 @@ p, input {
   align-items: center; }
   .loading-overlay svg path.pt-spinner-track {
     stroke: rgba(16, 22, 26, 0.5) !important; }
+
+.pt-tab:focus {
+  outline: none; }
 
 .Sell .price {
   color: #f75535; }
@@ -62,7 +68,26 @@ p, input {
         font-weight: bold; }
 
 .trade-history {
+  overflow: scroll;
+  background-color: #31404c;
   width: 410px; }
+  .trade-history h5 {
+    text-transform: uppercase;
+    border-bottom: none;
+    color: #fff;
+    padding-bottom: 10px;
+    margin: 0px 0 5px;
+    border-bottom: 1px solid #a7a7a7; }
+  .trade-history .pt-card {
+    padding-top: 0px;
+    box-shadow: none !important; }
+  .trade-history .pt-tab-list {
+    display: flex;
+    justify-content: space-around; }
+    .trade-history .pt-tab-list .pt-tab {
+      color: #fff; }
+  .trade-history .pt-tab-panel {
+    margin-top: 0; }
   .trade-history li {
     padding: 2px 8px;
     font-size: 13px;

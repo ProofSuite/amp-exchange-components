@@ -7,6 +7,9 @@ $red: #f75535;
 p, input {
   font-size: 13px;
 }
+button.pt-button {
+  font-size: 16px;
+}
 .loading-overlay {
   width: 100%;
   background-color: #b7b2b22b;
@@ -17,6 +20,9 @@ p, input {
   svg path.pt-spinner-track {
     stroke: rgba(16, 22, 26, 0.5) !important;
   }
+}
+.pt-tab:focus {
+  outline: none;
 }
 .Sell {
   .price {
@@ -85,6 +91,30 @@ p, input {
   }
 }
 .trade-history {
+  overflow: scroll;
+  h5 {
+    text-transform: uppercase;
+    border-bottom: none;
+    color: #fff;
+    padding-bottom: 10px;
+    margin: 0px 0 5px;
+    border-bottom: 1px solid #a7a7a7;
+  }
+  background-color: $secondary;
+  .pt-card {
+    padding-top: 0px;
+    box-shadow: none !important;
+  }
+  .pt-tab-list {
+    display: flex;
+    justify-content: space-around;
+    .pt-tab {
+      color: #fff;
+    }
+  }
+  .pt-tab-panel {
+    margin-top: 0;
+  }
   width: 410px;
   li {
     padding: 2px 8px;
