@@ -5,7 +5,6 @@ import { Loading } from "./index";
 
 class TradeHistory extends React.Component {
     render() {
-        const self = this;
         return (
                         this.props.loading ?
                             <Loading height="100%" />
@@ -33,15 +32,16 @@ export default TradeHistory;
 
 const HistroyList = ({tradeHistory, decimalPoints}) => (
     <div className="list-container pt-dark" style={{height: '100%'}}>
-        {console.log(tradeHistory, decimalPoints)}
         <ul className="pt-list-unstyled">
-            <li className="heading" style={{margin: '10px auto'}}>
+            <li className="heading" >
                 <span className="index">#</span>
                 <span className="time">Time</span>
                 <span className="type">Type</span>
                 <span className="amount">Amount</span>
                 <span className="price">Price</span>
             </li>
+        </ul>
+        <ul className="pt-list-unstyled list">
             {
                 tradeHistory
                     .sort((a, b) => a.time < b.time)

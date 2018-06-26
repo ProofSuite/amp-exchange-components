@@ -32,7 +32,7 @@ class DepthChartContainer extends React.Component {
     }
     render() {
         return (
-            <div className={this.props.loading ? "depth-chart-container loading" : "depth-chart-container"}>
+            <div style={this.props.style} className={this.props.loading ? "depth-chart-container loading" : "depth-chart-container"}>
                 {
                     this.props.loading &&
                         <Loading />
@@ -57,7 +57,8 @@ DepthChartContainer.propTypes = {
 }
 DepthChartContainer.defaultProps = {
     loading: false,
-    // decimalPoints: 4,
+    decimalPoints: 4,
+    style: {}
 }
 
 

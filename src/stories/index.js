@@ -7,7 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer,
-    DepthChartContainer } from "../containers";
+    DepthChartContainer, HomePage } from "../containers";
 
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
@@ -21,24 +21,24 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "../styles/css/style.css";
 import "@blueprintjs/table/lib/css/table.css";
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('HomePage', module).add('Home Page', () => <HomePage />);
 
 storiesOf('Order Book', module)
   .add('Loading', () => <OrderBookContainer
-      orderList={orderList}
+      orderList={orderList.list}
       bookName="Sell"
       loading={true}
       currency="ETH"
       pair="BTC"
   />)
   .add('Sell Order', () => <OrderBookContainer
-      orderList={orderList}
+      orderList={orderList.list}
       bookName="Sell"
       currency="ETH"
       pair="BTC"
   />)
   .add('Buy Order', () => <OrderBook
-      orderList={orderList}
+      orderList={orderList.list}
       currency="ETH"
       bookName="Buy"
       pair="USDT"

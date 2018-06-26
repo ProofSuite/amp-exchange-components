@@ -1,11 +1,57 @@
+body {
+  margin: 0;
+  background-color: #31404c;
+  overflow-x: hidden; }
+
 p, input {
   font-size: 13px; }
 
 h5 {
-  text-align: left; }
+  text-align: left;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin: 0px 0 5px;
+  color: #fff;
+  border-bottom: 1px solid #a7a7a7; }
+
+.list {
+  overflow-y: scroll;
+  height: 90%; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: #31404c; }
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #27343d; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #27343d; }
 
 button.pt-button {
   font-size: 16px; }
+
+.home-page {
+  background: #31404c;
+  display: flex;
+  flex-direction: column; }
+  .home-page .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; }
+  .home-page .column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; }
+  .home-page .pt-card {
+    background-color: #31404c; }
 
 .loading-overlay {
   width: 100%;
@@ -20,6 +66,15 @@ button.pt-button {
 .pt-tab:focus {
   outline: none; }
 
+.pt-tab {
+  color: #fff; }
+
+.pt-tab[aria-selected="true"], .pt-tab:not([aria-disabled="true"]):hover {
+  color: #48aff0; }
+
+.pt-tab-indicator-wrapper .pt-tab-indicator {
+  background-color: #48aff0; }
+
 .Sell .price {
   color: #f75535; }
 
@@ -33,11 +88,11 @@ button.pt-button {
   .order-book .pt-card {
     text-align: center;
     width: 100%;
-    height: 100%;
-    overflow-y: scroll; }
+    height: 100%; }
   .order-book ul {
     text-align: left; }
     .order-book ul li {
+      display: inline-block;
       padding: 2px 8px;
       font-size: 13px;
       width: 100%; }
@@ -49,8 +104,10 @@ button.pt-button {
         min-width: 15px; }
       .order-book ul li span.price, .order-book ul li span.amount, .order-book ul li span.total {
         min-width: 90px; }
-    .order-book ul li.heading span {
-      font-weight: 600; }
+    .order-book ul li.heading {
+      margin: 5px auto 0; }
+      .order-book ul li.heading span {
+        font-weight: 600; }
     .order-book ul li.not-heading {
       cursor: pointer;
       margin: 0px !important;
@@ -71,27 +128,17 @@ button.pt-button {
         font-weight: bold; }
 
 .trade-history {
-  overflow: scroll;
+  height: 700px;
   background-color: #31404c;
   width: 410px; }
-  .trade-history h5 {
-    text-transform: uppercase;
-    border-bottom: none;
-    color: #fff;
-    text-align: left;
-    padding-bottom: 10px;
-    margin: 0px 0 5px;
-    border-bottom: 1px solid #a7a7a7; }
   .trade-history .pt-card {
     padding-top: 0px;
     box-shadow: none !important; }
   .trade-history .pt-tabs {
-    height: 90%; }
-  .trade-history .pt-tab-list .pt-tab {
-    color: #fff; }
+    height: 94%; }
   .trade-history .pt-tab-panel {
     margin-top: 0;
-    height: 90%;
+    height: 100%;
     position: relative; }
     .trade-history .pt-tab-panel button {
       position: absolute;
@@ -160,7 +207,7 @@ input[type=number]::-webkit-outer-spin-button {
             width: 0px;
             margin: 0px; }
         .order-form .pt-form-group .pt-form-content .radio-buttons .active-box {
-          box-shadow: 0 0 3px 2px #137cbd, 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
+          box-shadow: 0 0 3px 2px #48aff0, 0 0 0 1px #48aff0, 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
           border-radius: 3px;
           border: 1px solid transparent; }
   .order-form label {
@@ -171,52 +218,84 @@ input[type=number]::-webkit-outer-spin-button {
 
 .coin-searcher {
   padding: 10px;
-  width: 800px;
+  min-width: 800px;
+  width: 100%;
+  height: 700px;
   background-color: #31404c; }
+  .coin-searcher .pt-tabs {
+    height: 100%; }
+    .coin-searcher .pt-tabs .pt-tab-panel {
+      margin-top: 0px;
+      height: 100%; }
   .coin-searcher .pt-tab-list .pt-tab {
-    color: #fff;
     font-weight: 600; }
     .coin-searcher .pt-tab-list .pt-tab svg {
       margin-top: 6px; }
-  .coin-searcher .pt-tab-list .pt-tab:hover {
-    color: #137cbd; }
-  .coin-searcher .pt-tab-list .pt-tab:focus {
-    outline: none; }
   .coin-searcher input {
     color: #fff;
     background-color: #27343d;
     width: 230px;
     height: 35px; }
-  .coin-searcher table {
-    width: 100%;
-    background-color: #30404d;
-    padding: 10px; }
-    .coin-searcher table tr th, .coin-searcher table tr td {
-      font-size: 13px;
-      box-shadow: inset 0px 1px 0 0 rgba(16, 22, 26, 0.15) !important;
-      color: #fff;
-      text-align: left; }
-    .coin-searcher table tr th {
-      box-shadow: none !important;
-      cursor: pointer; }
-      .coin-searcher table tr th span svg {
-        color: #137cbd;
-        margin-top: 2px; }
-    .coin-searcher table tr.loading-row:hover {
-      background-color: transparent;
-      position: inherit;
-      box-shadow: none; }
-      .coin-searcher table tr.loading-row:hover td {
-        background-color: transparent !important; }
-    .coin-searcher table tbody tr:hover {
+  .coin-searcher ul {
+    list-style: none;
+    padding: 0px; }
+    .coin-searcher ul li {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: #fff; }
+      .coin-searcher ul li span {
+        text-align: left;
+        word-wrap: break-word; }
+      .coin-searcher ul li span.star {
+        cursor: pointer;
+        width: 30px;
+        min-width: 30px; }
+      .coin-searcher ul li span.pair {
+        width: 120px; }
+      .coin-searcher ul li span.name {
+        width: 220px; }
+      .coin-searcher ul li span.symbol {
+        width: 100px; }
+      .coin-searcher ul li span.change {
+        min-width: 110px;
+        width: 110px; }
+      .coin-searcher ul li span.price {
+        width: 130px; }
+    .coin-searcher ul li.not-heading:hover {
+      background-color: #b7b2b22b;
       z-index: 1;
       border-radius: 3px;
       -webkit-box-shadow: inset 0 0 0 1px #31404c, -1px 10px 4px rgba(16, 22, 26, 0.1), 1px 18px 24px rgba(16, 22, 26, 0.2);
       box-shadow: inset 0 0 0 1px #31404c, -1px 5px 4px rgba(16, 22, 26, 0.1), 1px 7px 24px rgba(16, 22, 26, 0.2); }
-      .coin-searcher table tbody tr:hover span {
+      .coin-searcher ul li.not-heading:hover span {
         font-weight: bold; }
-    .coin-searcher table .loading-overlay {
-      height: 100%; }
+  .coin-searcher li.not-heading {
+    box-shadow: inset 0px 1px 0 0 rgba(16, 22, 26, 0.15) !important;
+    padding: 5px; }
+    .coin-searcher li.not-heading span {
+      font-size: 13px;
+      color: #fff;
+      text-align: left; }
+  .coin-searcher li.heading span {
+    box-shadow: none !important;
+    cursor: pointer;
+    font-weight: 600; }
+    .coin-searcher li.heading span span svg {
+      color: #48aff0;
+      margin-top: 2px; }
+  .coin-searcher li.loading-row {
+    height: 100%;
+    width: 100%;
+    text-align: center; }
+    .coin-searcher li.loading-row span {
+      width: 100%;
+      height: 100%;
+      text-align: center; }
+  .coin-searcher li.not-found span {
+    margin: 0px auto; }
+  .coin-searcher .loading-overlay {
+    height: 100%; }
 
 .depth-chart-container .depth-chart {
   width: 400px; }

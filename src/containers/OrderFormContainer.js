@@ -173,8 +173,8 @@ class OrderFormContainer extends React.Component {
     render() {
         console.log(this.state)
         return (
-            <div className="pt-card pt-elevation-1 pt-dark order-form">
-                <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>{this.props.formName} {this.props.currency}</h5>
+            <div style={this.props.style} className="pt-card pt-elevation-1 pt-dark order-form">
+                <h5 >{this.props.formName} {this.props.currency}</h5>
                 <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <Tab id="limit" title="Limit" panel={
                         <OrderForm
@@ -213,7 +213,8 @@ OrderFormContainer.propTypes = {
     loggedIn: PropTypes.bool.isRequired
 }
 OrderFormContainer.defaultProps = {
-    decimalPoints: 7
+    decimalPoints: 7,
+    style: {}
 }
 
 export default OrderFormContainer;

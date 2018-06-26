@@ -18,7 +18,7 @@ class TradeHistoryContainer extends React.Component {
     render() {
         const self = this;
         return (
-            <div className="pt-card pt-elevation-1 trade-history order-book">
+            <div style={this.props.style} className="pt-card pt-elevation-1 trade-history order-book">
                 <h5>Trade History</h5>
                 <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <Tab id="all" title="Market" panel={
@@ -55,6 +55,7 @@ TradeHistoryContainer.propTypes = {
 TradeHistoryContainer.defaultProps = {
     loading: false,
     decimalPoints: 4,
+    style: {}
 }
 
 export default TradeHistoryContainer;

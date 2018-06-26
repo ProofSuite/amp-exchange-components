@@ -7,25 +7,27 @@ class OrderBook extends React.Component {
     render() {
         const self = this;
         return (
-            <div className={this.props.bookName + " order-book"}>
+            <div style={this.props.style} className={this.props.bookName + " order-book"}>
                 <div className="pt-card pt-elevation-1 pt-dark">
-                    <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>{this.props.bookName}</h5>
+                    <h5 >{this.props.bookName}</h5>
                     {
                         this.props.loading &&
                         <Loading />
                     }
                     {
                         !this.props.loading &&
-                        <div className="list-container">
+                        <div className="list-container" style={{height: '90%'}}>
                             <ul className="pt-list-unstyled">
-                                <li className="heading" style={{margin: '10px auto'}}>
+                                <li className="heading">
                                     <span  className="index">#</span>
                                     <span  className="total">Total ({this.props.pair})</span>
                                     <span  className="amount">Amount ({this.props.currency})</span>
                                     <span  className="price" style={{color: "#fff"}}>Price ({this.props.pair})</span>
                                 </li>
+                            </ul>
+                            <ul className="pt-list-unstyled list" style={{height: '90%'}}>
                                 {
-                                    [].concat(this.props.orderList.list)
+                                    [].concat(this.props.orderList)
                                         .sort((a, b) => a.price < b.price)
                                         .map((order, index) =>
                                             <SingleOrder

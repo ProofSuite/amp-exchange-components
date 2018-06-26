@@ -6,13 +6,24 @@ class OrderBookContainer extends React.Component {
     render() {
         const self = this;
         return (
-            <OrderBook
-                orderList={this.props.orderList}
-                bookName={this.props.bookName}
-                loading={this.props.loading}
-                currency={this.props.currency}
-                pair={this.props.pair}
-            />
+            <div className="row">
+                <OrderBook
+                    orderList={this.props.orderList}
+                    bookName="Sell"
+                    loading={this.props.loading}
+                    currency={this.props.currency}
+                    style={this.props.style}
+                    pair={this.props.pair}
+                />
+                <OrderBook
+                    orderList={this.props.orderList}
+                    bookName="Buy"
+                    loading={this.props.loading}
+                    currency={this.props.currency}
+                    style={this.props.style}
+                    pair={this.props.pair}
+                />
+            </div>
         )
     }
 }
@@ -25,6 +36,7 @@ OrderBookContainer.propTypes = {
 OrderBookContainer.defaultProps = {
     loading: false,
     decimalPoints: 4,
+    style: {}
 }
 
 

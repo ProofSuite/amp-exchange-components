@@ -12,71 +12,71 @@ class CoinSearch extends React.Component {
         let state = this.props.state;
         const filteredCoins = state.filteredCoins;
         return (
-            <div>
-                <table className="pt-html-table pt-interactive pt-html-table-bordered">
-                    <thead>
-                        <tr>
-                            <th style={{width: '50px'}}>
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('pair')}>
+            <div style={{height: '100%'}}>
+                    <ul>
+                        <li className="heading">
+                            <span className="star" >
+                                &nbsp;
+                            </span>
+                            <span className="pair" onClick={() => this.props.onChangeFilterName('pair')}>
                                 Pair
                                 {state.filterName === "pair" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('name')}>
+                            </span>
+                            <span className="name" onClick={() => this.props.onChangeFilterName('name')}>
                                 Name
                                 {state.filterName === "name" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('symbol')}>
+                            </span>
+                            <span className="symbol"  onClick={() => this.props.onChangeFilterName('symbol')}>
                                 Symbol
                                 {state.filterName === "symbol" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('lastPrice')}>
+                            </span>
+                            <span className="price" onClick={() => this.props.onChangeFilterName('lastPrice')}>
                                 Last Price
                                 {state.filterName === "lastPrice" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('change')}>
+                            </span>
+                            <span className="change" onClick={() => this.props.onChangeFilterName('change')}>
                                 24hr Change
                                 {state.filterName === "change" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('high')}>
+                            </span>
+                            <span className="price"  onClick={() => this.props.onChangeFilterName('high')}>
                                 24hr High
                                 {state.filterName === "high" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('low')}>
+                            </span>
+                            <span className="price" onClick={() => this.props.onChangeFilterName('low')}>
                                 24hr Low
                                 {state.filterName === "low" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                            <th onClick={() => this.props.onChangeFilterName('volume')}>
+                            </span>
+                            <span className="price" onClick={() => this.props.onChangeFilterName('volume')}>
                                 Volume
                                 {state.filterName === "volume" && <span>
                                     <Icon icon={state.sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
-                            </th>
-                        </tr>
-                    </thead>
+                            </span>
+                        </li>
+                    </ul>
 
-                        <tbody>
+                        <ul className="list">
                         {
                             this.props.loading &&
-                            <tr className="loading-row">
-                                <td style={{height: '400px'}} colSpan={9} rowSpan={8}>
+                            <li className="loading-row">
+                                <span>
                                     <Loading />
-                                </td>
-                            </tr>
+                                </span>
+                            </li>
                         }
                         {
                             !this.props.loading &&
@@ -94,9 +94,8 @@ class CoinSearch extends React.Component {
                             filteredCoins.sort((a, b) => sorter(a, b, state.sortOrder, state.filterName)).filter((coin) => filterer(state.selectedTabId === "starred", coin, "starred", true)).length === 0 &&
                                 <NotFound />
                         }
-                        </tbody>
+                        </ul>
 
-                </table>
             </div>
         )
     }
@@ -117,27 +116,27 @@ CoinSearch.defaultProps = {
 
 
 const NotFound = () => (
-    <tr>
-        <td style={{textAlign: 'center'}} colSpan={9}>
+    <li  className="not-heading not-found">
+        <span style={{textAlign: 'center'}}>
             <Icon style={{color: '#f2b824'}} icon="issue"/>&nbsp;
             No result found.
-        </td>
-    </tr>
+        </span>
+    </li>
 );
 const CoinRow = ({props}) => (
-    <tr key={props.index}>
-        <td style={{width: '50px'}}>
+    <li key={props.index} className="not-heading">
+        <span className="star" >
             <Icon icon={props.coin.starred ? 'star' : 'star-empty'} onClick={() => props.toggleStar(props.coin.name)} />
-        </td>
-        <td>{props.coin.pair}</td>
-        <td>{props.coin.name}</td>
-        <td>{props.coin.symbol}</td>
-        <td>{boundDecimal(props.coin.lastPrice, props.decimalPoints)}</td>
-        <td style={parseFloat(props.coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(props.coin.change, props.decimalPoints)}%</td>
-        <td>{boundDecimal(props.coin.high, props.decimalPoints)}</td>
-        <td>{boundDecimal(props.coin.low, props.decimalPoints)}</td>
-        <td>{boundDecimal(props.coin.volume, props.decimalPoints)}</td>
-    </tr>
+        </span>
+        <span className="pair">{props.coin.pair}</span>
+        <span className="name">{props.coin.name}</span>
+        <span className="symbol">{props.coin.symbol}</span>
+        <span className="price">{boundDecimal(props.coin.lastPrice, props.decimalPoints)}</span>
+        <span className="change" style={parseFloat(props.coin.change) > 0 ? {color: '#00a45b'} : {color: '#f75535'}}>{boundDecimal(props.coin.change, props.decimalPoints)}%</span>
+        <span className="price">{boundDecimal(props.coin.high, props.decimalPoints)}</span>
+        <span className="price">{boundDecimal(props.coin.low, props.decimalPoints)}</span>
+        <span className="price">{boundDecimal(props.coin.volume, props.decimalPoints)}</span>
+    </li>
 );
 
 export default CoinSearch;

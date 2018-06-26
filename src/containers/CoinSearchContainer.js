@@ -82,7 +82,7 @@ class CoinSearchContainer extends React.Component {
     }
     render() {
         return (
-            <div className="coin-searcher">
+            <div style={this.props.style} className="coin-searcher">
                 <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
                     <Tab id="btc" title="BTC Market" panel={
@@ -126,8 +126,9 @@ CoinSearchContainer.propTypes = {
     loading: PropTypes.bool.isRequired,
     coinsList: PropTypes.object.isRequired
 }
-// CoinSearchContainer.defaultProps = {
-//     // decimalPoints: 7,
-//     // loading: false
-// }
+CoinSearchContainer.defaultProps = {
+    decimalPoints: 7,
+    loading: false,
+    style: {}
+}
 export default CoinSearchContainer;
