@@ -7,19 +7,13 @@ class TradeHistory extends React.Component {
     render() {
         const self = this;
         return (
-            <div>
-                <div className="pt-dark">
-                    {
                         this.props.loading ?
-                            <Loading style={{height: '410px'}} height="410px" />
+                            <Loading height="100%" />
                             :
                             <HistroyList
                                 tradeHistory={this.props.tradeHistory}
                                 decimalPoints={this.props.decimalPoints}
                             />
-                    }
-                </div>
-            </div>
         )
     }
 }
@@ -38,7 +32,7 @@ export default TradeHistory;
 
 
 const HistroyList = ({tradeHistory, decimalPoints}) => (
-    <div className="list-container">
+    <div className="list-container pt-dark" style={{height: '100%'}}>
         {console.log(tradeHistory, decimalPoints)}
         <ul className="pt-list-unstyled">
             <li className="heading" style={{margin: '10px auto'}}>

@@ -20,7 +20,7 @@ class TradeHistoryContainer extends React.Component {
         return (
             <div className="pt-card pt-elevation-1 trade-history order-book">
                 <h5>Trade History</h5>
-                <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <Tab id="all" title="Market" panel={
                         <TradeHistory
                             loading={this.props.loading}
@@ -28,7 +28,7 @@ class TradeHistoryContainer extends React.Component {
                             decimalPoints={this.props.decimalPoints}
                         />
                     } />
-                    <Tab id="mine" title="Mine" panel={
+                    <Tab id="mine" title="Mine"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
                         this.props.loggedIn ?
                             <TradeHistory
                                 loading={this.props.loading}
@@ -60,7 +60,5 @@ TradeHistoryContainer.defaultProps = {
 export default TradeHistoryContainer;
 
 const Login = () => (
-    <div style={{display: 'flex'}}>
         <button type="button"  style={{width: '100%',padding: '10px'}} className="pt-button pt-intent-primary">Login</button>
-    </div>
 )

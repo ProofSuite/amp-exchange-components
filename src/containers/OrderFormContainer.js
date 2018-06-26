@@ -1,16 +1,32 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { OrderForm } from "../components";
+import { Icon, Tabs, Tab } from "@blueprintjs/core";
+
 class OrderFormContainer extends React.Component {
     constructor(props){
         super(props);
-        this.textInput = React.createRef();
         this.state = {
             portion: 0,
             priceType: 'null',
+            selectedTabId: 'limit',
             price: 0,
+            stopPrice: 0,
+            limitPrice: 0,
             amount: 0,
             total: 0
+        }
+    }
+    componentDidMount() {
+        if(this.props.formName === "Buy") {
+            this.setState({
+                price: this.props.askPrice
+            })
+        }
+        else {
+            this.setState({
+                price: this.props.bidPrice
+            })
         }
     }
     handlePortion = (e) => {
@@ -44,15 +60,42 @@ class OrderFormContainer extends React.Component {
         })
         console.log(this.state)
     }
+    handleLimitPriceChange = (e) => {
+        let total = this.state.amount * e.target.value;
+        this.setState({
+            // total: Math.floor(total * Math.pow(10, 7)) / Math.pow(10, 7),
+            limitPrice: e.target.value
+        })
+    }
+    handleStopPriceChange = (e) => {
+        console.log(e)
+        let total = this.state.amount * e.target.value;
+        this.setState({
+            total: Math.floor(total * Math.pow(10, 7)) / Math.pow(10, 7),
+            stopPrice: e.target.value
+        })
+    }
     handleAmountChange = (e) => {
-        let total = this.state.price * e.target.value;
+        let total;
+        if(this.state.selectedTabId === "stop") {
+            total = this.state.stopPrice * e.target.value;
+        }
+        else {
+            total = this.state.price * e.target.value;
+        }
         this.setState({
             total: Math.floor(total * Math.pow(10, 7)) / Math.pow(10, 7),
             amount: e.target.value
         })
     }
     handleTotalChange = (e) => {
-        let amount = e.target.value / this.state.price;
+        let amount;
+        if(this.state.selectedTabId === "stop") {
+            amount = e.target.value / this.state.stopPrice;
+        }
+        else {
+            amount = e.target.value / this.state.price;
+        }
         amount = Math.floor(amount * Math.pow(10, 7)) / Math.pow(10, 7)
         this.setState({
             amount: Math.floor(amount * Math.pow(10, 7)) / Math.pow(10, 7),
@@ -71,33 +114,90 @@ class OrderFormContainer extends React.Component {
             priceType: e.target.value
         })
     }
-    resetRadios = (val) => {
-        if(val === "priceType"){
-            this.setState({priceType: ''});
+    resetRadios = () => {
+        this.setState({portion: 0})
+    }
+    changeTab = (tabId) => {
+        this.setState({
+            selectedTabId: tabId,
+            portion: 0,
+            priceType: 'null',
+            price: 0,
+            stopPrice: 0,
+            limitPrice: 0,
+            amount: 0,
+            total: 0
+        })
+        if(tabId === "limit" && this.props.formName === "Buy") {
+            this.setState({
+                price: this.props.askPrice
+            })
         }
-        else {
-            this.setState({portion: 0})
+        else if(tabId === "limit") {
+            this.setState({
+                price: this.props.bidPrice
+            })
+        }
+    }
+    onInputChange = (props) => {
+        switch (props.target) {
+            case "stopPrice":
+                this.handleStopPriceChange(props.evt);
+                break;
+
+            case "limitPrice":
+                this.handleLimitPriceChange(props.evt);
+                break;
+
+            case "price":
+                this.handlePriceChange(props.evt);
+                break;
+
+            case "total":
+                this.handleTotalChange(props.evt);
+                break;
+
+            case "amount":
+                this.handleAmountChange(props.evt);
+                break;
+
+            case "portion":
+                this.handlePortion(props.evt);
+                break;
+
+            case "radio":
+                this.resetRadios(props.evt);
+                break;
         }
     }
     render() {
+        console.log(this.state)
         return (
-            <OrderForm
-                askPrice={this.props.askPrice}
-                bidPrice={this.props.bidPrice}
-                totalCurrBalance={this.props.totalCurrBalance}
-                totalPairBalance={this.props.totalPairBalance}
-                formName={this.props.formName}
-                currency={this.props.currency}
-                pair={this.props.pair}
-                loggedIn={this.props.loggedIn}
-                state={this.state}
-                handlePriceType={this.handlePriceType}
-                handlePriceChange={this.handlePriceChange}
-                handlePortion={this.handlePortion}
-                handleTotalChange={this.handleTotalChange}
-                handleAmountChange={this.handleAmountChange}
-                resetRadios={this.resetRadios}
-            />
+            <div className="pt-card pt-elevation-1 pt-dark order-form">
+                <h5 style={{borderBottom: '1px solid #a7a7a7', paddingBottom: '7px'}}>{this.props.formName} {this.props.currency}</h5>
+                <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                    <Tab id="limit" title="Limit" panel={
+                        <OrderForm
+                            formName={this.props.formName}
+                            currency={this.props.currency}
+                            pair={this.props.pair}
+                            loggedIn={this.props.loggedIn}
+                            state={this.state}
+                            onInputChange={this.onInputChange}
+                        />
+                    } />
+                    <Tab id="stop" title="Stop Limit" panel={
+                        <OrderForm
+                            formName={this.props.formName}
+                            currency={this.props.currency}
+                            pair={this.props.pair}
+                            loggedIn={this.props.loggedIn}
+                            state={this.state}
+                            onInputChange={this.onInputChange}
+                        />
+                    } />
+                </Tabs>
+            </div>
         )
     }
 }
@@ -115,6 +215,5 @@ OrderFormContainer.propTypes = {
 OrderFormContainer.defaultProps = {
     decimalPoints: 7
 }
-
 
 export default OrderFormContainer;
