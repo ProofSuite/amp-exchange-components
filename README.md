@@ -4,7 +4,9 @@ React components for the decentralized exchange view
 - [Order Book](src/containers/OrderBookContainer.js) 
 - [Order Form](src/containers/OrderFormContainer.js) 
 - [Trade History](src/containers/TradeHistoryContainer.js) 
+- [Depth Chart](src/containers/DepthChartContainer.js) 
 - [Coin Searcher](src/containers/CoinSearcherContainer.js)
+- [Home Page](src/containers/HomePage.js)
 ### Installation
 - Install dependencies
 ```bash
