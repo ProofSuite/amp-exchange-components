@@ -82,7 +82,7 @@ class CoinSearchContainer extends React.Component {
     }
     render() {
         return (
-            <div style={this.props.style} className="coin-searcher">
+            <div style={this.props.style} className="coin-searcher pt-elevation-1">
                 <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
                     <Tab id="btc" title="BTC Market" panel={

@@ -25,7 +25,6 @@ class HomePage extends React.Component {
                                 currency="XRP"
                                 pair="BTC"
                                 loggedIn={true}
-                                style={{margin: '10px'}}
                             />
                             <OrderFormContainer
                                 askPrice={0.0233}
@@ -36,7 +35,6 @@ class HomePage extends React.Component {
                                 currency="XRP"
                                 pair="BTC"
                                 loggedIn={true}
-                                style={{margin: '10px'}}
                             />
                         </div>
                         <OrdersStats

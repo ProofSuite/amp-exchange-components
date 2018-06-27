@@ -54,6 +54,7 @@ button.pt-button {
 .home-page {
   background: $secondary;
   display: flex;
+  margin: auto 10px;
   flex-direction: column;
   .row {
     display: flex;
@@ -97,6 +98,9 @@ button.pt-button {
 .pt-tab-indicator-wrapper .pt-tab-indicator {
   background-color: $hoverBlue;
 }
+.pt-card, .pt-elevation-1 {
+  box-shadow: none !important;
+}
 .Sell {
   .price {
     color: #f75535;
@@ -110,8 +114,9 @@ button.pt-button {
 .order-book {
   text-align: center;
   width: 420px;
-  height: 400px;
+  height: 500px;
   .pt-card {
+    padding: 0px;
     text-align: center;
     width: 100%;
     height: 100%;
@@ -166,6 +171,7 @@ button.pt-button {
 }
 .trade-history {
   height: 700px;
+  width: 100% !important;
   h5 {
   }
   background-color: $secondary;
@@ -404,6 +410,11 @@ input[type=number]::-webkit-outer-spin-button {
     .loading-overlay {
       height: 100%;
     }
+}
+.order-stats {
+  .pt-tab-panel {
+    margin-top: 0;
+  }
 }
 .depth-chart-container {
   .depth-chart {

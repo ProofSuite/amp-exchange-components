@@ -16,7 +16,7 @@ class OrdersStats extends React.Component {
     }
     render() {
         return (
-            <div style={this.props.style} className="pt-card pt-elevation-1">
+            <div style={this.props.style} className="pt-card order-stats pt-elevation-1">
                 <h5>Trade History</h5>
                 <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <Tab id="books" title="Market" panel={
