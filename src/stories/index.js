@@ -7,7 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer,
-    DepthChartContainer, HomePage } from "../containers";
+    DepthChartContainer, HomePage, OrdersStats } from "../containers";
 
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
@@ -42,6 +42,13 @@ storiesOf('Order Book', module)
       currency="ETH"
       bookName="Buy"
       pair="USDT"
+  />);
+
+storiesOf('Order Stats', module)
+  .add('Loading', () => <OrdersStats
+      style={{width: '100%'}}
+      orderList={orderList.list}
+      bidAsks={bidAsks.list}
   />);
 
 storiesOf('Order Form', module)

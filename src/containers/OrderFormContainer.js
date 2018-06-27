@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { OrderForm } from "../components";
-import { Icon, Tabs, Tab } from "@blueprintjs/core";
+import { Icon, Card, Tabs, Tab } from "@blueprintjs/core";
 
 class OrderFormContainer extends React.Component {
     constructor(props){
@@ -173,7 +173,7 @@ class OrderFormContainer extends React.Component {
     render() {
         console.log(this.state)
         return (
-            <div style={this.props.style} className="pt-card pt-elevation-1 pt-dark order-form">
+            <Card style={this.props.style} className="pt-dark order-form">
                 <h5 >{this.props.formName} {this.props.currency}</h5>
                 <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
                     <Tab id="limit" title="Limit" panel={
@@ -197,7 +197,7 @@ class OrderFormContainer extends React.Component {
                         />
                     } />
                 </Tabs>
-            </div>
+            </Card>
         )
     }
 }

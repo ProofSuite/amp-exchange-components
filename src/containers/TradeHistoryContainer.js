@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { TradeHistory, Loading } from "../components";
-import { Icon, Tabs, Tab } from "@blueprintjs/core";
+import { Icon, Card, Tabs, Tab } from "@blueprintjs/core";
 
 class TradeHistoryContainer extends React.Component {
     constructor(props) {
@@ -18,28 +18,30 @@ class TradeHistoryContainer extends React.Component {
     render() {
         const self = this;
         return (
-            <div style={this.props.style} className="pt-card pt-elevation-1 trade-history order-book">
-                <h5>Trade History</h5>
-                <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
-                    <Tab id="all" title="Market" panel={
-                        <TradeHistory
-                            loading={this.props.loading}
-                            tradeHistory={this.props.tradeHistory}
-                            decimalPoints={this.props.decimalPoints}
-                        />
-                    } />
-                    <Tab id="mine" title="Mine"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
-                        this.props.loggedIn ?
+            <Card style={this.props.style} className="pt-dark">
+                <div style={this.props.style} className=" trade-history order-book">
+                    <h5>Trade History</h5>
+                    <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                        <Tab id="all" title="Market" panel={
                             <TradeHistory
                                 loading={this.props.loading}
-                                tradeHistory={this.props.tradeHistory.slice(40)}
+                                tradeHistory={this.props.tradeHistory}
                                 decimalPoints={this.props.decimalPoints}
                             />
-                            :
-                            <Login />
-                    } />
-                </Tabs>
-            </div>
+                        } />
+                        <Tab id="mine" title="Mine"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
+                            this.props.loggedIn ?
+                                <TradeHistory
+                                    loading={this.props.loading}
+                                    tradeHistory={this.props.tradeHistory.slice(40)}
+                                    decimalPoints={this.props.decimalPoints}
+                                />
+                                :
+                                <Login />
+                        } />
+                    </Tabs>
+                </div>
+            </Card>
 
         )
     }

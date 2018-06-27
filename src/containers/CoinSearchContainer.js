@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { CoinSearch } from "../components";
 import PropTypes from 'prop-types';
-import { Icon, Tabs, Tab } from "@blueprintjs/core";
+import { Icon, Card, Tabs, Tab } from "@blueprintjs/core";
 import { getObjectFromProperty } from "../utils/services";
 
 class CoinSearchContainer extends React.Component {
@@ -82,42 +82,44 @@ class CoinSearchContainer extends React.Component {
     }
     render() {
         return (
-            <div style={this.props.style} className="coin-searcher pt-elevation-1">
-                <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
-                    <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
-                    <Tab id="btc" title="BTC Market" panel={
-                        <CoinSearch
-                            state={this.state}
-                            loading={this.props.loading}
-                            toggleStar={this.toggleStar}
-                            onChangeSearchFilter={this.onChangeSearchFilter}
-                            onChangeFilterName={this.onChangeFilterName}
-                            onChangeSortOrder={this.onChangeSortOrder}
-                        />
-                    } />
-                    <Tab id="usdt" title="USDT Market" panel={
-                        <CoinSearch
-                            state={this.state}
-                            loading={this.props.loading}
-                            toggleStar={this.toggleStar}
-                            onChangeSearchFilter={this.onChangeSearchFilter}
-                            onChangeFilterName={this.onChangeFilterName}
-                            onChangeSortOrder={this.onChangeSortOrder}
-                        />
-                    } />
-                    <Tab id="starred" title={<Icon icon='star'/>} panel={
-                        <CoinSearch
-                            state={this.state}
-                            loading={this.props.loading}
-                            toggleStar={this.toggleStar}
-                            onChangeSearchFilter={this.onChangeSearchFilter}
-                            onChangeFilterName={this.onChangeFilterName}
-                            onChangeSortOrder={this.onChangeSortOrder}
-                        />
-                    } />
-                </Tabs>
+            <Card style={{width: '100%', margin: '10px'}} className="pt-dark">
+                <div style={this.props.style} className="coin-searcher">
+                    <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                        <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
+                        <Tab id="btc" title="BTC Market" panel={
+                            <CoinSearch
+                                state={this.state}
+                                loading={this.props.loading}
+                                toggleStar={this.toggleStar}
+                                onChangeSearchFilter={this.onChangeSearchFilter}
+                                onChangeFilterName={this.onChangeFilterName}
+                                onChangeSortOrder={this.onChangeSortOrder}
+                            />
+                        } />
+                        <Tab id="usdt" title="USDT Market" panel={
+                            <CoinSearch
+                                state={this.state}
+                                loading={this.props.loading}
+                                toggleStar={this.toggleStar}
+                                onChangeSearchFilter={this.onChangeSearchFilter}
+                                onChangeFilterName={this.onChangeFilterName}
+                                onChangeSortOrder={this.onChangeSortOrder}
+                            />
+                        } />
+                        <Tab id="starred" title={<Icon icon='star'/>} panel={
+                            <CoinSearch
+                                state={this.state}
+                                loading={this.props.loading}
+                                toggleStar={this.toggleStar}
+                                onChangeSearchFilter={this.onChangeSearchFilter}
+                                onChangeFilterName={this.onChangeFilterName}
+                                onChangeSortOrder={this.onChangeSortOrder}
+                            />
+                        } />
+                    </Tabs>
 
-            </div>
+                </div>
+            </Card>
         )
     }
 }

@@ -22,9 +22,9 @@ class OrderForm extends React.Component {
                         />
                 }{
                 this.props.loggedIn ?
-                    <button className="pt-button pt-large pt-intent-primary">{this.props.formName}</button>
+                    <Button string="submit" className="pt-button pt-large pt-intent-primary" text={this.props.formName} />
                     :
-                    <button className="pt-button pt-large pt-intent-primary">Login</button>
+                    <Button string="button" className="pt-button pt-large pt-intent-primary" text="Login" />
                     }
 
 
@@ -52,6 +52,7 @@ const LimitForm = ({props, pair, onInputChange}) => (
                 <FormGroup
                     label="Price"
                     labelFor="text-input"
+                    required={true}
                 >
                     <input id="text-input"
                            name="price"
@@ -62,6 +63,7 @@ const LimitForm = ({props, pair, onInputChange}) => (
                 <FormGroup
                     label="Total"
                     labelFor="text-input"
+                    required={true}
                 >
                     <input id="text-input"
                            onKeyPress={() => onInputChange({target: 'radio'})}

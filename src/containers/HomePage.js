@@ -15,7 +15,7 @@ class HomePage extends React.Component {
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div className="column"  style={{width: '70%'}} >
                         <CoinSearchContainer loading={false} coinsList={coinsList.list} style={{margin: '10px'}}/>
-                        <div className="row">
+                        <div className="row" style={{margin: '10px'}}>
                             <OrderFormContainer
                                 askPrice={0.25}
                                 bidPrice={0.29}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { DepthChartContainer, OrderBookContainer } from "./index";
-import { Icon, Tabs, Tab } from "@blueprintjs/core";
+import { Icon, Tabs, Tab, Card } from "@blueprintjs/core";
 
 class OrdersStats extends React.Component {
     constructor(props) {
@@ -16,10 +16,11 @@ class OrdersStats extends React.Component {
     }
     render() {
         return (
-            <div style={this.props.style} className="pt-card order-stats pt-elevation-1">
-                <h5>Trade History</h5>
+            <Card style={this.props.style} className="pt-dark order-stats">
+            <div style={this.props.style}>
+                <h5>Order Book</h5>
                 <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
-                    <Tab id="books" title="Market" panel={
+                    <Tab id="books" title="List" panel={
                         <OrderBookContainer
                             orderList={this.props.orderList}
                             bookName="Sell"
@@ -28,7 +29,7 @@ class OrdersStats extends React.Component {
                             pair="BTC"
                         />
                     } />
-                    <Tab id="chart" title="Mine"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
+                    <Tab id="chart" title="Depth"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
                         <DepthChartContainer
                             data={this.props.bidAsks}
                             loading={false}
@@ -37,6 +38,7 @@ class OrdersStats extends React.Component {
                     } />
                 </Tabs>
             </div>
+            </Card>
         )
     }
 }

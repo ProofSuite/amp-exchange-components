@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { boundDecimal } from "../utils/services";
 import { Loading } from "./index";
+import { Icon, Card, Tabs, Tab } from "@blueprintjs/core";
 
 class TradeHistory extends React.Component {
     render() {
         return (
-                        this.props.loading ?
-                            <Loading height="100%" />
-                            :
-                            <HistroyList
-                                tradeHistory={this.props.tradeHistory}
-                                decimalPoints={this.props.decimalPoints}
-                            />
+                            this.props.loading ?
+                                <Loading height="100%" />
+                                :
+                                <HistroyList
+                                    tradeHistory={this.props.tradeHistory}
+                                    decimalPoints={this.props.decimalPoints}
+                                />
         )
     }
 }
