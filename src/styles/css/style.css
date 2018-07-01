@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #31404c;
+  background-color: #fff;
   overflow-x: hidden; }
 
 p, input {
@@ -339,5 +339,17 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 20px; }
   .depth-chart-container.loading .loading-overlay {
     height: 100%; }
+
+.main-chart .toolbar {
+  width: 100%;
+  display: inline-block; }
+  .main-chart .toolbar .pt-icon {
+    cursor: pointer;
+    float: left;
+    margin-right: 15px; }
+  .main-chart .toolbar .pt-icon.active {
+    color: #48aff0; }
+.main-chart .chart-container label, .main-chart .chart-container select {
+  display: none !important; }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@ $red: #f75535;
 
 body {
   margin: 0;
-  background-color: $secondary;
+  background-color: $primary;
   overflow-x: hidden;
 }
 p, input {
@@ -469,5 +469,26 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 20px;
   .loading-overlay {
     height: 100%;
+  }
+}
+
+
+.main-chart {
+  .toolbar {
+    width: 100%;
+    display: inline-block;
+    .pt-icon {
+      cursor: pointer;
+      float: left;
+      margin-right: 15px;
+    }
+    .pt-icon.active {
+      color: $hoverBlue;
+    }
+  }
+  .chart-container {
+    label, select {
+      display: none !important;
+    }
   }
 }

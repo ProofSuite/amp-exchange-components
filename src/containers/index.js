@@ -5,6 +5,7 @@ import TradeHistoryContainer from "./TradeHistoryContainer";
 import DepthChartContainer from "./DepthChartContainer";
 import OrdersStats from "./OrdersStats";
 import HomePage from "./HomePage";
+import MainChartContainer from "./MainChartContainer";
 
 
 export {
@@ -15,4 +16,5 @@ export {
     DepthChartContainer,
     OrdersStats,
     HomePage,
+    MainChartContainer
 }
