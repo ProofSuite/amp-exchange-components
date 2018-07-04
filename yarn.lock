@@ -28,6 +28,14 @@
     classnames "^2.2"
     tslib "^1.9.0"
 
+"@blueprintjs/select@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/select/-/select-2.0.1.tgz#4746aff7ed534113b17d0663bf548b2867dc4b2a"
+  dependencies:
+    "@blueprintjs/core" "^2.3.1"
+    classnames "^2.2"
+    tslib "^1.9.0"
+
 "@blueprintjs/table@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@blueprintjs/table/-/table-2.1.1.tgz#78cca0e94205b1ba3c3094cf667ea7b04205e27d"

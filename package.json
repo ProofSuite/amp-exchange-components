@@ -5,6 +5,7 @@
   "dependencies": {
     "@amcharts/amcharts3-react": "^3.1.0",
     "@blueprintjs/core": "^2.3.1",
+    "@blueprintjs/select": "^2.0.1",
     "@blueprintjs/table": "^2.1.1",
     "amcharts3": "amcharts/amcharts3",
     "ammap3": "^3.21.13",

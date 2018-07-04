@@ -5,6 +5,8 @@ import CoinSearch from "./CoinSearch";
 import Loading from "./Loading";
 import TradeHistory from "./TradeHistory";
 import DepthChart from "./DepthChart";
+import StandardSelect from "./StandardSelect";
+import MultiSelect from "./MultiSelect";
 
 export {
     OrderBook,
@@ -13,5 +15,7 @@ export {
     CoinSearch,
     Loading,
     TradeHistory,
-    DepthChart
+    DepthChart,
+    StandardSelect,
+    MultiSelect
 }

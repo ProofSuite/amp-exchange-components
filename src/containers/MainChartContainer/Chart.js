@@ -63,8 +63,10 @@ function calculateData(inputData) {
                 sma20(
                     ema50(
                         bb(
-                            macdCalculator(
-                                ema12(ema26(elder(rsiCalculator(fullSTO(fi(defaultSar(atr14(inputData))))))))
+                            smaVolume50(
+                                macdCalculator(
+                                    ema12(ema26(elder(rsiCalculator(fullSTO(fi(defaultSar(atr14(inputData))))))))
+                                )
                             )
                         )
                     )
@@ -100,6 +102,14 @@ class CandleStickChartWithMACDIndicator extends React.Component {
         const end = xAccessor(data[Math.max(0, data.length - 150)]);
         const xExtents = [start, end];
 
+        const theme = {
+            greenMint: '#40944e',
+            redDesire: '#d62323',
+            greenNeon: '#25bb2e',
+            redChilli: '#d62323',
+            axis: '#fff',
+        }
+
         return (
             <div>
             <ChartCanvas height={600}
@@ -114,13 +124,52 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                          displayXAccessor={displayXAccessor}
                          xExtents={xExtents}
             >
-                <Chart id={1} height={300}
+                <Chart id={1}
+                       height={this.props.chartHeight - this.props.inidcatorHeight}
+                       // height={this.props.chartHeight}
                        yExtents={[d => [d.high, d.low], ema26.accessor(), ema12.accessor()]}
                        padding={{ top: 10, bottom: 20 }}
                 >
-                    <XAxis axisAt="bottom" orient="bottom" showTicks={false} outerTickSize={0} />
-                    <YAxis axisAt="right" orient="right" ticks={5} />
+                    <XAxis
+                        axisAt="bottom"
+                        orient="bottom"
+                        stroke={theme.axis}
+                        fill={theme.axis}
+                        showTicks={!this.props.macd && !this.props.rsi}
+                        tickStroke={theme.axis}
+                        outerTickSize={0}
+                    />
 
+                    <YAxis
+                        axisAt="right"
+                        orient="right"
+                        stroke={theme.axis}
+                        ticks={10}
+                        tickStroke={theme.axis}
+                        fill={theme.axis}
+                        outerTickSize={0}
+                    />
+
+                    <CandlestickSeries
+                        fill={d => {
+                            return d.close > d.open ? theme.greenMint : theme.redDesire;
+                        }}
+                        opacity={1}
+                        stroke={d => {
+                            return d.close > d.open ? theme.greenNeon : theme.redChilli;
+                        }}
+                        wickStroke={d => {
+                            return d.close > d.open ? theme.greenNeon : theme.redChilli;
+                        }}
+                    />
+
+                    {!this.props.macd && !this.props.rsi &&<MouseCoordinateX
+                        at="bottom"
+                        orient="bottom"
+                        displayFormat={timeFormat("%Y-%m-%d")}
+                        rectRadius={5}
+                        {...mouseEdgeAppearance}
+                    />}
 
                     <MouseCoordinateY
                         at="right"
@@ -128,7 +177,6 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                         displayFormat={format(".2f")}
                         {...mouseEdgeAppearance}
                     />
-                    <CandlestickSeries />
 
                     {
                         this.props.line &&
@@ -141,11 +189,16 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                         </div>
                     }
 
-
-
-
                     <EdgeIndicator itemType="last" orient="right" edgeAt="right"
-                                   yAccessor={d => d.close} fill={d => d.close > d.open ? "#6BA583" : "#FF0000"}/>
+                                   yAccessor={d => d.close}
+                                   fill={d => d.close > d.open ? "#A2F5BF" : "#F9ACAA"}
+                                   stroke={d => d.close > d.open ? "#0B4228" : "#6A1B19"}
+                                   textFill={d => d.close > d.open ? "#0B4228" : "#420806"}
+                                   strokeOpacity={1}
+                                   strokeWidth={3}
+                                   arrowWidth={2}
+                    />
+
 
                     <OHLCTooltip origin={[-40, 0]}/>
 
@@ -169,30 +222,40 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                     />
 
                 </Chart>
+                {
+                    this.props.volume &&
+                    <Chart id={2} height={150}
+                           yExtents={[d => d.volume, smaVolume50.accessor()]}
+                           origin={(w, h) => [0, h - (150 + this.props.inidcatorHeight)]}
+                    >
 
-                <Chart id={2} height={150}
-                       yExtents={[d => d.volume, smaVolume50.accessor()]}
-                       origin={(w, h) => [0, h - 400]}
-                >
-                    <YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
+                        <MouseCoordinateY
+                            at="left"
+                            orient="left"
+                            displayFormat={format(".4s")} />
 
-                    <MouseCoordinateY
-                        at="left"
-                        orient="left"
-                        displayFormat={format(".4s")} />
-
-                    <BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "#6BA583" : "#FF0000"} />
-                    <AreaSeries yAccessor={smaVolume50.accessor()} stroke={smaVolume50.stroke()} fill={smaVolume50.fill()}/>
-                </Chart>
+                        <BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "#6BA583" : "#FF0000"} />
+                        <AreaSeries yAccessor={smaVolume50.accessor()} stroke={smaVolume50.stroke()} fill={smaVolume50.fill()}/>
+                    </Chart>
+                }
 
                 {
                     this.props.macd &&
-                    <Chart id={3} height={150}
+                    <Chart id={3}
+                           height={150}
                            yExtents={macdCalculator.accessor()}
                            origin={(w, h) => [0, h - 150]} padding={{ top: 10, bottom: 10 }}
                     >
-                        <XAxis axisAt="bottom" orient="bottom"/>
-                        <YAxis axisAt="right" orient="right" ticks={2} />
+                        <XAxis axisAt="bottom" orient="bottom"
+                               stroke={theme.axis}
+                               fill={theme.axis}
+                               tickStroke={theme.axis}
+                        />
+                        <YAxis axisAt="right" orient="right" ticks={2}
+                               stroke={theme.axis}
+                               fill={theme.axis}
+                               tickStroke={theme.axis}
+                        />
 
                         <MouseCoordinateX
                             at="bottom"
@@ -224,12 +287,30 @@ class CandleStickChartWithMACDIndicator extends React.Component {
 
                     <Chart id={3}
                            yExtents={[0, 100]}
-                           height={125} origin={(w, h) => [0, h - 250]}
+                           height={150}
+                           origin={(w, h) => [0, h - 150]}
                     >
-                        <XAxis axisAt="bottom" orient="bottom" showTicks={false} outerTickSize={0} />
+                        <XAxis axisAt="bottom"
+                               stroke={theme.axis}
+                               fill={theme.axis}
+                               tickStroke={theme.axis}
+                               orient="bottom" outerTickSize={0} />
+
                         <YAxis axisAt="right"
                                orient="right"
+                               stroke={theme.axis}
+                               fill={theme.axis}
+                               tickStroke={theme.axis}
                                tickValues={[30, 50, 70]}/>
+
+                        <MouseCoordinateX
+                            at="bottom"
+                            orient="bottom"
+                            displayFormat={timeFormat("%Y-%m-%d")}
+                            rectRadius={5}
+                            {...mouseEdgeAppearance}
+                        />
+
                         <MouseCoordinateY
                             at="right"
                             orient="right"
