@@ -389,6 +389,8 @@ input[type=number]::-webkit-outer-spin-button {
       padding: 0px 6px; }
   .main-chart .toolbar .menu .pt-popover-target button {
     width: 100%; }
+  .main-chart .toolbar button {
+    float: left; }
 .main-chart .chart-container {
   text-align: left; }
   .main-chart .chart-container label, .main-chart .chart-container select {
@@ -401,5 +403,8 @@ input[type=number]::-webkit-outer-spin-button {
     fill: #48aff0 !important; }
   .main-chart .chart-container g.react-stockcharts-tooltip text tspan[fill="#4682B4"] {
     fill: #fff; }
+
+.chart-overlay {
+  margin: 50px; }
 
 /*# sourceMappingURL=style.css.map */

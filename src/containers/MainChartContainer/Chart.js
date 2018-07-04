@@ -109,7 +109,7 @@ class CandleStickChartWithMACDIndicator extends React.Component {
             redChilli: '#d62323',
             axis: '#fff',
         }
-
+            console.log(width, 'width')
         return (
             <div>
             <ChartCanvas height={600}

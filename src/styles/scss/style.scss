@@ -538,6 +538,9 @@ input[type=number]::-webkit-outer-spin-button {
         }
       }
     }
+    button {
+      float: left;
+    }
   }
   .chart-container {
     text-align: left;
@@ -565,4 +568,8 @@ input[type=number]::-webkit-outer-spin-button {
       }
     }
   }
+}
+.chart-overlay {
+  //width: 95%;
+  margin: 50px;
 }
