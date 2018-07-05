@@ -16,25 +16,33 @@ class TradeHistoryContainer extends React.Component {
         })
     }
     render() {
-        const self = this;
+        const {
+            props: {
+                style, loading, tradeHistory, decimalPoints, loggedIn
+            },
+            state: {
+                selectedTabId
+            },
+            changeTab
+        } = this;
         return (
-            <Card style={this.props.style} className="pt-dark">
-                <div style={this.props.style} className=" trade-history order-book">
+            <Card style={style} className="pt-dark">
+                <div style={style} className=" trade-history order-book">
                     <h5>Trade History</h5>
-                    <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                    <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
                         <Tab id="all" title="Market" panel={
                             <TradeHistory
-                                loading={this.props.loading}
-                                tradeHistory={this.props.tradeHistory}
-                                decimalPoints={this.props.decimalPoints}
+                                loading={loading}
+                                tradeHistory={tradeHistory}
+                                decimalPoints={decimalPoints}
                             />
                         } />
                         <Tab id="mine" title="Mine"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
-                            this.props.loggedIn ?
+                            loggedIn ?
                                 <TradeHistory
-                                    loading={this.props.loading}
-                                    tradeHistory={this.props.tradeHistory.slice(40)}
-                                    decimalPoints={this.props.decimalPoints}
+                                    loading={loading}
+                                    tradeHistory={tradeHistory.slice(40)}
+                                    decimalPoints={decimalPoints}
                                 />
                                 :
                                 <Login />
@@ -52,7 +60,6 @@ TradeHistoryContainer.propTypes = {
     loading: PropTypes.bool.isRequired,
     decimalPoints: PropTypes.number,
     loggedIn: PropTypes.bool.isRequired,
-
 }
 TradeHistoryContainer.defaultProps = {
     loading: false,

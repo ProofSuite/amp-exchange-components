@@ -18,18 +18,24 @@ class StandardSelect extends Component {
     }
 
     render () {
+        const {
+            items,
+            item,
+            icon,
+            handleChange
+        } = this.props;
         return (
             <Select
-                items={this.props.items}
+                items={items}
                 filterable={false}
                 itemRenderer={this.renderItem}
                 noResults={<MenuItem disabled text='No results.' />}
-                onItemSelect={this.props.handleChange}
+                onItemSelect={handleChange}
                 popoverProps={false}
             >
                 <Button
-                    icon={this.props.icon}
-                    text={this.props.item ? `${this.props.item.name}` : '(No selection)' }
+                    icon={icon}
+                    text={item ? `${item.name}` : '(No selection)' }
                     righticonname='double-caret-vertical'
                 />
             </Select>

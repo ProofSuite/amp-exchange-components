@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { CoinSearch } from "../components";
 import PropTypes from 'prop-types';
 import { Icon, Card, Tabs, Tab } from "@blueprintjs/core";
-import { getObjectFromProperty } from "../utils/services";
+import { getObjectFromProperty, filterer, sorter } from "../utils/services";
 
 class CoinSearchContainer extends React.Component {
     constructor(props) {
@@ -81,39 +81,64 @@ class CoinSearchContainer extends React.Component {
         })
     }
     render() {
+        const {
+            state: {
+                selectedTabId, searchFilter, sortOrder, filterName, filteredCoins
+            },
+            props: {
+                style, loading
+            },
+            toggleStar,
+            onChangeSearchFilter,
+            onChangeFilterName,
+            onChangeSortOrder,
+            changeTab
+        } = this;
         return (
             <Card style={{width: '100%', margin: '10px'}} className="pt-dark">
-                <div style={this.props.style} className="coin-searcher">
-                    <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
-                        <input onChange={this.onChangeSearchFilter} value={this.state.searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
+                <div style={style} className="coin-searcher">
+                    <Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
+                        <input onChange={onChangeSearchFilter} value={searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
                         <Tab id="btc" title="BTC Market" panel={
                             <CoinSearch
                                 state={this.state}
-                                loading={this.props.loading}
-                                toggleStar={this.toggleStar}
-                                onChangeSearchFilter={this.onChangeSearchFilter}
-                                onChangeFilterName={this.onChangeFilterName}
-                                onChangeSortOrder={this.onChangeSortOrder}
+                                filteredCoins={
+                                    filteredCoins.sort((a, b) => sorter(a, b, sortOrder, filterName))
+                                        .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
+                                }
+                                loading={loading}
+                                toggleStar={toggleStar}
+                                onChangeSearchFilter={onChangeSearchFilter}
+                                onChangeFilterName={onChangeFilterName}
+                                onChangeSortOrder={onChangeSortOrder}
                             />
                         } />
                         <Tab id="usdt" title="USDT Market" panel={
                             <CoinSearch
                                 state={this.state}
-                                loading={this.props.loading}
-                                toggleStar={this.toggleStar}
-                                onChangeSearchFilter={this.onChangeSearchFilter}
-                                onChangeFilterName={this.onChangeFilterName}
-                                onChangeSortOrder={this.onChangeSortOrder}
+                                filteredCoins={
+                                    filteredCoins.sort((a, b) => sorter(a, b, sortOrder, filterName))
+                                        .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
+                                }
+                                loading={loading}
+                                toggleStar={toggleStar}
+                                onChangeSearchFilter={onChangeSearchFilter}
+                                onChangeFilterName={onChangeFilterName}
+                                onChangeSortOrder={onChangeSortOrder}
                             />
                         } />
                         <Tab id="starred" title={<Icon icon='star'/>} panel={
                             <CoinSearch
                                 state={this.state}
-                                loading={this.props.loading}
-                                toggleStar={this.toggleStar}
-                                onChangeSearchFilter={this.onChangeSearchFilter}
-                                onChangeFilterName={this.onChangeFilterName}
-                                onChangeSortOrder={this.onChangeSortOrder}
+                                filteredCoins={
+                                    filteredCoins.sort((a, b) => sorter(a, b, sortOrder, filterName))
+                                        .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
+                                }
+                                loading={loading}
+                                toggleStar={toggleStar}
+                                onChangeSearchFilter={onChangeSearchFilter}
+                                onChangeFilterName={onChangeFilterName}
+                                onChangeSortOrder={onChangeSortOrder}
                             />
                         } />
                     </Tabs>

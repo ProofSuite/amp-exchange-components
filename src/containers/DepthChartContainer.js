@@ -33,18 +33,24 @@ class DepthChartContainer extends React.Component {
         return txt;
     }
     render() {
+        const {
+            props: {
+                style, loading, data, title
+            },
+            toolTip
+        } = this;
         return (
-            <div style={this.props.style} className={this.props.loading ? "depth-chart-container loading" : "depth-chart-container"}>
+            <div style={style} className={loading ? "depth-chart-container loading" : "depth-chart-container"}>
                 {
-                    this.props.loading &&
+                    loading &&
                         <Loading />
                 }
                 {
-                    !this.props.loading &&
+                    !loading &&
                     <DepthChart
-                        data={this.props.data}
-                        title={this.props.title}
-                        tootlTip={this.toolTip}
+                        data={data}
+                        title={title}
+                        tootlTip={toolTip}
                     />
                 }
 

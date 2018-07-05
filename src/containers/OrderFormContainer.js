@@ -128,6 +128,7 @@ class OrderFormContainer extends React.Component {
             amount: 0,
             total: 0
         })
+        console.log(tabId)
         if(tabId === "limit" && this.props.formName === "Buy") {
             this.setState({
                 price: this.props.askPrice
@@ -171,29 +172,34 @@ class OrderFormContainer extends React.Component {
         }
     }
     render() {
-        console.log(this.state)
+        const {
+            props: {
+                style, formName, currency, selectedTabId, loggedIn, pair
+            },
+            onInputChange, changeTab
+        } = this;
         return (
-            <Card style={this.props.style} className="pt-dark order-form">
-                <h5 >{this.props.formName} {this.props.currency}</h5>
-                <Tabs id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+            <Card style={style} className="pt-dark order-form">
+                <h5 >{formName} {currency}</h5>
+                <Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
                     <Tab id="limit" title="Limit" panel={
                         <OrderForm
-                            formName={this.props.formName}
-                            currency={this.props.currency}
-                            pair={this.props.pair}
-                            loggedIn={this.props.loggedIn}
+                            formName={formName}
+                            currency={currency}
+                            pair={pair}
+                            loggedIn={loggedIn}
                             state={this.state}
-                            onInputChange={this.onInputChange}
+                            onInputChange={onInputChange}
                         />
                     } />
                     <Tab id="stop" title="Stop Limit" panel={
                         <OrderForm
-                            formName={this.props.formName}
-                            currency={this.props.currency}
-                            pair={this.props.pair}
-                            loggedIn={this.props.loggedIn}
+                            formName={formName}
+                            currency={currency}
+                            pair={pair}
+                            loggedIn={loggedIn}
                             state={this.state}
-                            onInputChange={this.onInputChange}
+                            onInputChange={onInputChange}
                         />
                     } />
                 </Tabs>

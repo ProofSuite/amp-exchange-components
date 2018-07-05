@@ -6,7 +6,7 @@ import { CoinSearchContainer, DepthChartContainer, OrderBookContainer,
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
 import * as tradeHistory from "../jsons/tradeHistory.json";
-import * as bidAsks from "../jsons/bidAsks.json";
+import * as bidAsk from "../jsons/bidAsk.json";
 
 class HomePage extends React.Component {
     render() {
@@ -40,7 +40,7 @@ class HomePage extends React.Component {
                         <OrdersStats
                             style={{width: '100%'}}
                             orderList={orderList.list}
-                            bidAsks={bidAsks.list}
+                            bidAsk={bidAsk.list}
                         />
                     </div>
                     <div className="column"  style={{width: '30%'}}  >

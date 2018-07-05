@@ -8,21 +8,25 @@ const bidAsk = require('../jsons/bidAsk.json');
 
 const orderList = path.join(__dirname, '../jsons/', 'ordersList.json');
 const tradeHistory = path.join(__dirname, '../jsons/', 'tradeHistory.json');
+const orderHistory = path.join(__dirname, '../jsons/', 'orderHistory.json');
 const coinsList = path.join(__dirname, '../jsons/', 'coinsList.json');
 const sellOrders = path.join(__dirname, '../jsons/', 'sellOrders.json');
-const bidAsks = path.join(__dirname, '../jsons/', 'bidAsk.json');
+const bidAskFile = path.join(__dirname, '../jsons/', 'bidAsk.json');
+
 fs.removeSync(orderList);
 fs.removeSync(tradeHistory);
+fs.removeSync(orderHistory);
 fs.removeSync(coinsList);
 fs.removeSync(sellOrders);
-fs.removeSync(bidAsks);
+// fs.removeSync(bidAskFile);
 
 
 fs.writeFile(path.join(__dirname, '../jsons/', 'ordersList.json'), orderListJSON());
 fs.writeFile(path.join(__dirname, '../jsons/', 'tradeHistory.json'), tradeHistoryJSON());
+fs.writeFile(path.join(__dirname, '../jsons/', 'orderHistory.json'), orderHistoryJSON());
 fs.writeFile(path.join(__dirname, '../jsons/', 'coinsList.json'), coinsListJSON());
 fs.writeFile(path.join(__dirname, '../jsons/', 'sellOrders.json'), sellOrdersJSON());
-fs.writeFile(path.join(__dirname, '../jsons/', 'bidAsks.json'), bidAskJSON());
+// fs.writeFile(path.join(__dirname, '../jsons/', 'bidAsk.json'), bidAskJSON());
 
 
 function orderListJSON () {
@@ -59,6 +63,38 @@ function tradeHistoryJSON () {
         sample = {
             time: 1229779335639,
             type: "buy",
+            amount: 21212,
+            price: 0.0022
+        };
+    }
+    return JSON.stringify(json);
+}
+
+function orderHistoryJSON () {
+    var json = {
+        list: []
+    }
+    let coins = Object.values(CMCData.data);
+    let sample = {
+        time: 1229779335639,
+        type: "buy",
+        pair: coins[0].symbol + '/' + coins[49].symbol,
+        amount: 21212,
+        price: 0.0022
+    };
+
+    for (let i=0; i<50; i++){
+        sample.amount = parseFloat((Math.random()*10000).toFixed(4));
+        sample.price = parseFloat((Math.random()/100).toFixed(4));
+        sample.pair = coins[i].symbol +  '/' + coins[49-i].symbol;
+        console.log(coins[i].symbol +  '/' + coins[49-i].symbol);
+        sample.type = parseInt(Math.random() * 10)%2 === 0 ? "buy" : "sell";
+        sample.time = parseInt(Math.random() * (1529838864571 - 1289062415000 + 1))+1289062415000;
+        json.list.push(sample);
+        sample = {
+            time: 1229779335639,
+            type: "buy",
+            pair: coins[0].symbol,
             amount: 21212,
             price: 0.0022
         };
@@ -155,7 +191,7 @@ function bidAskJSON() {
         // console.log(list, type, desc)
 
         // Convert to data points
-        for(var i = 0; i < list.length; i++) {
+        for(let i = 0; i < list.length; i++) {
             list[i] = {
                 value: Number(list[i][0]),
                 volume: Number(list[i][1]),
@@ -217,5 +253,5 @@ function bidAskJSON() {
     var json = {
         list: res
     }
-    return JSON.stringify(json);
+    // return JSON.stringify(json);
 }

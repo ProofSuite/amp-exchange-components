@@ -7,6 +7,7 @@ import OrdersStats from "./OrdersStats";
 import HomePage from "./HomePage";
 import MainChartContainer from "./MainChartContainer";
 import LandingPage from "./LandingPage";
+import OrderHistoryContainer from "./OrderHistoryContainer";
 
 
 export {
@@ -18,5 +19,6 @@ export {
     OrdersStats,
     HomePage,
     MainChartContainer,
-    LandingPage
+    LandingPage,
+    OrderHistoryContainer
 }

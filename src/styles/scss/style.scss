@@ -1,11 +1,11 @@
+@import "../../../node_modules/@blueprintjs/core/lib/scss/variables.scss";
+
 $primary: #fff;
 $secondary: #31404c;
 $inputBG: #27343d;
 $hoverBlue: #48aff0;
 $BGHover: #b7b2b22b;
 $gray: #728089;
-$green: #00a45b;
-$red: #f75535;
 
 body {
   margin: 0;
@@ -119,18 +119,19 @@ button.pt-button {
 //}
 .Sell {
   .price {
-    color: #f75535;
+    color: $red4;
   }
 }
 .Buy {
   .price {
-    color: #00a45b;
+    color: $green5;
   }
 }
 .order-book {
   text-align: center;
   width: 420px;
   height: 500px;
+background-color: $secondary;
   .inner {
     padding: 20px;
     text-align: center;
@@ -186,9 +187,18 @@ button.pt-button {
   }
 }
 
+.order-history {
+  width: auto !important;
+  span.close {
+    svg {
+      fill: $red2;
+    }
+  }
+}
+
 .trade-history {
   height: 700px;
-  width: 410px;
+  width: 400px;
   h5 {
   }
   background-color: $secondary;
@@ -229,7 +239,7 @@ button.pt-button {
       min-width: 35px;
     }
     span.price, span.amount, span.total {
-      min-width: 60px !important;
+      min-width: 80px !important;
     }
   }
 }

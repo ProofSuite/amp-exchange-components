@@ -7,13 +7,15 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer,
-    DepthChartContainer, MainChartContainer, HomePage, LandingPage, OrdersStats } from "../containers";
+    DepthChartContainer, MainChartContainer, HomePage, LandingPage, OrdersStats,
+    OrderHistoryContainer } from "../containers";
 
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
 import * as tradeHistory from "../jsons/tradeHistory.json";
+import * as orderHistory from "../jsons/orderHistory.json";
 import * as sellOrders from "../jsons/sellOrders.json";
-import * as bidAsks from "../jsons/bidAsks.json";
+import * as bidAsk from "../jsons/bidAsk.json";
 
 import '../App.css';
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -51,7 +53,7 @@ storiesOf('Order Stats', module)
   .add('Loading', () => <OrdersStats
       style={{width: '100%'}}
       orderList={orderList.list}
-      bidAsks={bidAsks.list}
+      bidAsk={bidAsk.list}
   />);
 
 storiesOf('Order Form', module)
@@ -112,14 +114,32 @@ storiesOf('Trade History', module)
         loading={false}
     />);
 
+
+storiesOf('Order History', module)
+    .add('Loading', () => <OrderHistoryContainer
+        orderHistory={orderHistory.list}
+        loggedIn={true}
+        loading={true}
+    />)
+    .add('Not LoggedIn', () => <OrderHistoryContainer
+        orderHistory={orderHistory.list}
+        loggedIn={false}
+        loading={false}
+    />)
+    .add('LoggedIn', () => <OrderHistoryContainer
+        orderHistory={orderHistory.list}
+        loggedIn={true}
+        loading={false}
+    />);
+
 storiesOf('Depth Graph', module)
     .add('Loading', () => <DepthChartContainer
-        data={bidAsks.list}
+        data={bidAsk.list}
         loading={true}
         title="Price (BTC/USDT)"
     />)
     .add('Not Loading', () => <DepthChartContainer
-        data={bidAsks.list}
+        data={bidAsk.list}
         loading={false}
         title="Price (BTC/USDT)"
     />);

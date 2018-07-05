@@ -4,6 +4,7 @@ import SingleOrder from "./SingleOrder";
 import CoinSearch from "./CoinSearch";
 import Loading from "./Loading";
 import TradeHistory from "./TradeHistory";
+import OrderHistory from "./OrderHistory";
 import DepthChart from "./DepthChart";
 import StandardSelect from "./StandardSelect";
 import MultiSelect from "./MultiSelect";
@@ -17,5 +18,6 @@ export {
     TradeHistory,
     DepthChart,
     StandardSelect,
-    MultiSelect
+    MultiSelect,
+    OrderHistory
 }

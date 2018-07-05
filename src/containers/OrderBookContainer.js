@@ -4,24 +4,26 @@ import { OrderBook } from "../components";
 
 class OrderBookContainer extends React.Component {
     render() {
-        const self = this;
+        const {
+            orderList, loading, currency, style, pair
+        } = this.props;
         return (
             <div className="row">
                 <OrderBook
-                    orderList={this.props.orderList}
+                    orderList={orderList}
                     bookName="Sell"
-                    loading={this.props.loading}
-                    currency={this.props.currency}
-                    style={this.props.style}
-                    pair={this.props.pair}
+                    loading={loading}
+                    currency={currency}
+                    style={style}
+                    pair={pair}
                 />
                 <OrderBook
-                    orderList={this.props.orderList}
+                    orderList={orderList}
                     bookName="Buy"
-                    loading={this.props.loading}
-                    currency={this.props.currency}
-                    style={this.props.style}
-                    pair={this.props.pair}
+                    loading={loading}
+                    currency={currency}
+                    style={style}
+                    pair={pair}
                 />
             </div>
         )
@@ -38,6 +40,5 @@ OrderBookContainer.defaultProps = {
     decimalPoints: 4,
     style: {}
 }
-
 
 export default OrderBookContainer;

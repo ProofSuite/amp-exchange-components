@@ -1,3 +1,6 @@
+/*
+ * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
+ */
 body {
   margin: 0;
   background-color: #fff;
@@ -92,15 +95,16 @@ button.pt-button {
   background-color: #48aff0; }
 
 .Sell .price {
-  color: #f75535; }
+  color: #f55656; }
 
 .Buy .price {
-  color: #00a45b; }
+  color: #3dcc91; }
 
 .order-book {
   text-align: center;
   width: 420px;
-  height: 500px; }
+  height: 500px;
+  background-color: #31404c; }
   .order-book .inner {
     padding: 20px;
     text-align: center;
@@ -144,9 +148,14 @@ button.pt-button {
       .order-book ul li.not-heading:hover span {
         font-weight: bold; }
 
+.order-history {
+  width: auto !important; }
+  .order-history span.close svg {
+    fill: #c23030; }
+
 .trade-history {
   height: 700px;
-  width: 410px;
+  width: 400px;
   background-color: #31404c; }
   .trade-history .pt-card {
     padding-top: 0px;
@@ -176,7 +185,7 @@ button.pt-button {
     .trade-history li span.type {
       min-width: 35px; }
     .trade-history li span.price, .trade-history li span.amount, .trade-history li span.total {
-      min-width: 60px !important; }
+      min-width: 80px !important; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

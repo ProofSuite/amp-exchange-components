@@ -4,31 +4,33 @@ import { Button, Intent, Spinner, Label, FormGroup } from "@blueprintjs/core";
 
 class OrderForm extends React.Component {
     render() {
-        const props = this.props.state;
+        const {
+            state, pair, onInputChange, loggedIn, formName, currency
+        } = this.props;
         return (
-            <div className="">
+            <div>
                 {
-                    props.selectedTabId === "limit" ?
+                    state.selectedTabId === "limit" ?
                         <LimitForm
-                            props={props}
-                            pair={this.props.pair}
-                            onInputChange={this.props.onInputChange}
+                            props={state}
+                            pair={pair}
+                            currency={currency}
+                            onInputChange={onInputChange}
                         />
                         :
                         <StopLimitForm
-                            props={props}
-                            pair={this.props.pair}
-                            onInputChange={this.props.onInputChange}
+                            props={state}
+                            pair={pair}
+                            currency={currency}
+                            onInputChange={onInputChange}
                         />
-                }{
-                this.props.loggedIn ?
-                    <Button string="submit" className="pt-button pt-large pt-intent-primary" text={this.props.formName} />
+                }
+                {
+                loggedIn ?
+                    <Button string="submit" className="pt-button pt-large pt-intent-primary" text={formName} />
                     :
                     <Button string="button" className="pt-button pt-large pt-intent-primary" text="Login" />
                     }
-
-
-
             </div>
         )
     }
@@ -46,7 +48,7 @@ OrderForm.defaultProps = {
 
 export default OrderForm;
 
-const LimitForm = ({props, pair, onInputChange}) => (
+const LimitForm = ({props, pair, currency, onInputChange}) => (
     <div className="row">
         <div className="column">
                 <FormGroup
@@ -111,7 +113,7 @@ const LimitForm = ({props, pair, onInputChange}) => (
     </div>
 )
 
-const StopLimitForm = ({props, pair, onInputChange}) => (
+const StopLimitForm = ({props, pair, currency, onInputChange}) => (
     <div className="row">
         <div className="column">
             <FormGroup

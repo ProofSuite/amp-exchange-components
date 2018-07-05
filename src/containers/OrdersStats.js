@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { DepthChartContainer, OrderBookContainer } from "./index";
-import { Icon, Tabs, Tab, Card } from "@blueprintjs/core";
+import { Tabs, Tab, Card } from "@blueprintjs/core";
+import PropTypes from 'prop-types';
 
 class OrdersStats extends React.Component {
     constructor(props) {
@@ -15,14 +16,23 @@ class OrdersStats extends React.Component {
         })
     }
     render() {
+        const {
+            state: {
+                selectedTabId
+            },
+            props: {
+                bidAsk, orderList, style
+            },
+            changeTab
+        } = this;
         return (
-            <Card style={this.props.style} className="pt-dark order-stats">
-            <div style={this.props.style}>
+            <Card style={style} className="pt-dark order-stats">
+            <div style={style}>
                 <h5>Order Book</h5>
-                <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={this.state.selectedTabId}  onChange={this.changeTab}>
+                <Tabs  style={{height: '100%'}} id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
                     <Tab id="books" title="List" panel={
                         <OrderBookContainer
-                            orderList={this.props.orderList}
+                            orderList={orderList}
                             bookName="Sell"
                             loading={false}
                             currency="ETH"
@@ -31,7 +41,7 @@ class OrdersStats extends React.Component {
                     } />
                     <Tab id="chart" title="Depth"  style={{display: 'flex', alignItems: 'flex-end'}} panel={
                         <DepthChartContainer
-                            data={this.props.bidAsks}
+                            data={bidAsk}
                             loading={false}
                             title="Price (BTC/USDT)"
                         />
@@ -43,5 +53,15 @@ class OrdersStats extends React.Component {
     }
 }
 
+OrdersStats.propTypes = {
+    orderList: PropTypes.array.isRequired,
+    bidAsk: PropTypes.array.isRequired,
+    decimalPoints: PropTypes.number,
+}
+OrdersStats.defaultProps = {
+    loading: false,
+    decimalPoints: 4,
+    style: {}
+}
 
 export default OrdersStats;

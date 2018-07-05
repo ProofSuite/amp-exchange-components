@@ -4,9 +4,10 @@ import { sorter, filterer, boundDecimal } from "../utils/services";
 import PropTypes from 'prop-types';
 import { Loading } from "./index";
 
-class CoinSearch extends React.Component {
+class CoinSearchSmall extends React.Component {
 
     render() {
+        const self = this;
         const {
             state: {
                 filterName,
@@ -18,6 +19,7 @@ class CoinSearch extends React.Component {
             toggleStar,
             onChangeFilterName
         } = this.props;
+
         return (
             <div style={{height: '100%'}}>
                     <ul>
@@ -108,7 +110,7 @@ class CoinSearch extends React.Component {
     }
 }
 
-CoinSearch.propTypes = {
+CoinSearchSmall.propTypes = {
     loading: PropTypes.bool.isRequired,
     state: PropTypes.object.isRequired,
     toggleStar: PropTypes.func.isRequired,
@@ -116,7 +118,7 @@ CoinSearch.propTypes = {
     onChangeFilterName: PropTypes.func.isRequired,
     onChangeSortOrder: PropTypes.func.isRequired
 }
-CoinSearch.defaultProps = {
+CoinSearchSmall.defaultProps = {
     decimalPoints: 7,
     loading: false
 }
@@ -146,4 +148,4 @@ const CoinRow = ({props}) => (
     </li>
 );
 
-export default CoinSearch;
+export default CoinSearchSmall;
