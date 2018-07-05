@@ -322,6 +322,16 @@ input[type=number]::-webkit-outer-spin-button {
   .coin-searcher .loading-overlay {
     height: 100%; }
 
+.coin-searcher.small-searcher {
+  width: 430px;
+  min-width: 430px; }
+  .coin-searcher.small-searcher .pt-tab-list {
+    justify-content: space-between; }
+    .coin-searcher.small-searcher .pt-tab-list input {
+      width: 140px; }
+  .coin-searcher.small-searcher li {
+    justify-content: flex-start; }
+
 .order-stats .pt-tab-panel {
   margin-top: 0; }
 

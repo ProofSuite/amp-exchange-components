@@ -86,7 +86,7 @@ class CoinSearchContainer extends React.Component {
                 selectedTabId, searchFilter, sortOrder, filterName, filteredCoins
             },
             props: {
-                style, loading
+                style, loading, small
             },
             toggleStar,
             onChangeSearchFilter,
@@ -96,7 +96,7 @@ class CoinSearchContainer extends React.Component {
         } = this;
         return (
             <Card style={{width: '100%', margin: '10px'}} className="pt-dark">
-                <div style={style} className="coin-searcher">
+                <div style={style}  className={small ? "small-searcher coin-searcher" : "coin-searcher"}>
                     <Tabs id="TabsExample" selectedTabId={selectedTabId}  onChange={changeTab}>
                         <input onChange={onChangeSearchFilter} value={searchFilter} className="pt-input" type="text" placeholder="Search ..." dir="auto" />
                         <Tab id="btc" title="BTC Market" panel={
@@ -107,6 +107,7 @@ class CoinSearchContainer extends React.Component {
                                         .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
                                 }
                                 loading={loading}
+                                small={small}
                                 toggleStar={toggleStar}
                                 onChangeSearchFilter={onChangeSearchFilter}
                                 onChangeFilterName={onChangeFilterName}
@@ -121,6 +122,7 @@ class CoinSearchContainer extends React.Component {
                                         .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
                                 }
                                 loading={loading}
+                                small={small}
                                 toggleStar={toggleStar}
                                 onChangeSearchFilter={onChangeSearchFilter}
                                 onChangeFilterName={onChangeFilterName}
@@ -135,6 +137,7 @@ class CoinSearchContainer extends React.Component {
                                         .filter((coin) => filterer(selectedTabId === "starred", coin, "starred", true))
                                 }
                                 loading={loading}
+                                small={small}
                                 toggleStar={toggleStar}
                                 onChangeSearchFilter={onChangeSearchFilter}
                                 onChangeFilterName={onChangeFilterName}
@@ -156,6 +159,7 @@ CoinSearchContainer.propTypes = {
 CoinSearchContainer.defaultProps = {
     decimalPoints: 7,
     loading: false,
+    small: false,
     style: {}
 }
 export default CoinSearchContainer;

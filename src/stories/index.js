@@ -92,10 +92,17 @@ storiesOf('Coin Searcher', module)
     .add('Loading', () => <CoinSearchContainer
         coinsList={coinsList.list}
         loading={true}
+        small={false}
     />)
     .add('Not Loading', () => <CoinSearchContainer
         coinsList={coinsList.list}
         loading={false}
+        small={false}
+    />)
+    .add('Small Searcher', () => <CoinSearchContainer
+        coinsList={coinsList.list}
+        loading={false}
+        small={true}
     />);
 
 storiesOf('Trade History', module)
@@ -113,7 +120,6 @@ storiesOf('Trade History', module)
         loggedIn={true}
         loading={false}
     />);
-
 
 storiesOf('Order History', module)
     .add('Loading', () => <OrderHistoryContainer

@@ -7,75 +7,108 @@ import { Loading } from "./index";
 class CoinSearchSmall extends React.Component {
 
     render() {
-        const self = this;
         const {
             state: {
                 filterName,
                 sortOrder
             },
             loading,
+            small,
             filteredCoins,
             decimalPoints,
             toggleStar,
             onChangeFilterName
         } = this.props;
-
         return (
             <div style={{height: '100%'}}>
                     <ul>
-                        <li className="heading">
+                        {
+                            small ?
+                            <li className="heading">
                             <span className="star" >
                                 &nbsp;
                             </span>
-                            <span className="pair" onClick={() => onChangeFilterName('pair')}>
-                                Pair
-                                {filterName === "pair" && <span>
-                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
-                                </span>}
-                            </span>
-                            <span className="name" onClick={() => onChangeFilterName('name')}>
-                                Name
-                                {filterName === "name" && <span>
-                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
-                                </span>}
-                            </span>
-                            <span className="symbol"  onClick={() => onChangeFilterName('symbol')}>
+                                <span className="symbol"  onClick={() => onChangeFilterName('symbol')}>
                                 Symbol
-                                {filterName === "symbol" && <span>
+                                    {filterName === "symbol" && <span>
                                     <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
                             </span>
-                            <span className="price" onClick={() => onChangeFilterName('lastPrice')}>
+                                <span className="price" onClick={() => onChangeFilterName('lastPrice')}>
                                 Last Price
-                                {filterName === "lastPrice" && <span>
+                                    {filterName === "lastPrice" && <span>
                                     <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
                             </span>
-                            <span className="change" onClick={() => onChangeFilterName('change')}>
+                                <span className="change" onClick={() => onChangeFilterName('change')}>
                                 24hr Change
-                                {filterName === "change" && <span>
+                                    {filterName === "change" && <span>
                                     <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
                             </span>
-                            <span className="price"  onClick={() => onChangeFilterName('high')}>
-                                24hr High
-                                {filterName === "high" && <span>
-                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
-                                </span>}
-                            </span>
-                            <span className="price" onClick={() => onChangeFilterName('low')}>
-                                24hr Low
-                                {filterName === "low" && <span>
-                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
-                                </span>}
-                            </span>
-                            <span className="price" onClick={() => onChangeFilterName('volume')}>
+                                <span className="price" onClick={() => onChangeFilterName('volume')}>
                                 Volume
-                                {filterName === "volume" && <span>
+                                    {filterName === "volume" && <span>
                                     <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
                                 </span>}
                             </span>
-                        </li>
+                            </li>
+                                :
+                            <li className="heading">
+                            <span className="star" >
+                                &nbsp;
+                            </span>
+                                    <span className="pair" onClick={() => onChangeFilterName('pair')}>
+                                Pair
+                                        {filterName === "pair" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="name" onClick={() => onChangeFilterName('name')}>
+                                Name
+                                        {filterName === "name" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="symbol"  onClick={() => onChangeFilterName('symbol')}>
+                                Symbol
+                                        {filterName === "symbol" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="price" onClick={() => onChangeFilterName('lastPrice')}>
+                                Last Price
+                                        {filterName === "lastPrice" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="change" onClick={() => onChangeFilterName('change')}>
+                                24hr Change
+                                        {filterName === "change" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="price"  onClick={() => onChangeFilterName('high')}>
+                                24hr High
+                                        {filterName === "high" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="price" onClick={() => onChangeFilterName('low')}>
+                                24hr Low
+                                        {filterName === "low" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                                    <span className="price" onClick={() => onChangeFilterName('volume')}>
+                                Volume
+                                        {filterName === "volume" && <span>
+                                    <Icon icon={sortOrder === "asc" ? 'chevron-down' : 'chevron-up'} />
+                                </span>}
+                            </span>
+                            </li>
+
+                        }
                     </ul>
 
                         <ul className="list">
@@ -91,10 +124,17 @@ class CoinSearchSmall extends React.Component {
                             !loading &&
                             filteredCoins.map(function (coin, index) {
                                 return (
+                                    small ?
+                                    <SmallCoinRow
+                                        key={index}
+                                        props={{index, coin, decimalPoints: decimalPoints, toggleStar: toggleStar}}
+                                    />
+                                        :
                                     <CoinRow
                                         key={index}
                                         props={{index, coin, decimalPoints: decimalPoints, toggleStar: toggleStar}}
                                     />
+
                                 )
                             })
                         }
@@ -144,6 +184,17 @@ const CoinRow = ({props}) => (
         <span className="change" style={parseFloat(props.coin.change) > 0 ? {color: Colors.GREEN5} : {color: Colors.RED4}}>{boundDecimal(props.coin.change, props.decimalPoints)}%</span>
         <span className="price">{boundDecimal(props.coin.high, props.decimalPoints)}</span>
         <span className="price">{boundDecimal(props.coin.low, props.decimalPoints)}</span>
+        <span className="price">{boundDecimal(props.coin.volume, props.decimalPoints)}</span>
+    </li>
+);
+const SmallCoinRow = ({props}) => (
+    <li key={props.index} className="not-heading">
+        <span className="star" >
+            <Icon icon={props.coin.starred ? 'star' : 'star-empty'} onClick={() => props.toggleStar(props.coin.name)} />
+        </span>
+        <span className="symbol">{props.coin.symbol}</span>
+        <span className="price">{boundDecimal(props.coin.lastPrice, props.decimalPoints)}</span>
+        <span className="change" style={parseFloat(props.coin.change) > 0 ? {color: Colors.GREEN5} : {color: Colors.RED4}}>{boundDecimal(props.coin.change, props.decimalPoints)}%</span>
         <span className="price">{boundDecimal(props.coin.volume, props.decimalPoints)}</span>
     </li>
 );
