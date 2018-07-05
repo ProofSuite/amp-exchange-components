@@ -12,6 +12,7 @@ class StandardSelect extends Component {
                 disabled={modifiers.disabled}
                 onClick={(rank) => handleClick(item.rank)}
                 text={`${item.name}`}
+                key={item.rank}
             />
         )
     }

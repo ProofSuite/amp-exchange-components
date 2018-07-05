@@ -10,6 +10,8 @@ import { Overlay, Button } from "@blueprintjs/core";
 
 export default class ChartLoadingScreen extends React.Component {
     render() {
+        const nullIndicator = {name: '', height: 0, active: false};
+
         if (this.props.data.length < 1) {
             return <Loading />
         }
@@ -21,11 +23,15 @@ export default class ChartLoadingScreen extends React.Component {
                             macd={this.props.macd}
                             volume={this.props.volume}
                             chartHeight={this.props.chartHeight}
-                            inidcatorHeight={this.props.inidcatorHeight}
+                            indicatorHeight={this.props.indicatorHeight}
                             rsi={this.props.rsi}
                             line={this.props.line}
+                            expandedChard={this.props.expandedChard}
+                            atr={this.props.atr ? this.props.atr : nullIndicator}
+                            forceIndex={this.props.forceIndex ? this.props.forceIndex : nullIndicator}
                             data={this.props.data}
-                            />}
+                        />
+                        }
                     </TypeChooser>
             </div>
         )

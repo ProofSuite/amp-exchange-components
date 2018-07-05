@@ -562,8 +562,17 @@ input[type=number]::-webkit-outer-spin-button {
         tspan.react-stockcharts-tooltip-label {
           fill: $hoverBlue !important;
         }
+        tspan {
+          fill: $primary;
+        }
         tspan[fill="#4682B4"] {
           fill: $primary;
+        }
+        tspan[fill="#FF0000"] {
+          fill: #FF0000;
+        }
+        tspan[fill="#00F300"] {
+          fill: #00F300;
         }
       }
     }
@@ -571,5 +580,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .chart-overlay {
   //width: 95%;
-  margin: 50px;
+  //margin: 50px;
+  .pt-card {
+    height: 100%;
+  }
+  .main-chart{
+    .chart-container {
+      height: 90%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+}
+
+.landing-page {
+
 }

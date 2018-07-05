@@ -7,7 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import { OrderBook, OrderForm } from "../components";
 import { OrderBookContainer, OrderFormContainer, CoinSearchContainer, TradeHistoryContainer,
-    DepthChartContainer, HomePage, OrdersStats } from "../containers";
+    DepthChartContainer, MainChartContainer, HomePage, LandingPage, OrdersStats } from "../containers";
 
 import * as orderList from "../jsons/ordersList.json";
 import * as coinsList from "../jsons/coinsList.json";
@@ -22,6 +22,9 @@ import "../styles/css/style.css";
 import "@blueprintjs/table/lib/css/table.css";
 
 storiesOf('HomePage', module).add('Home Page', () => <HomePage />);
+
+// storiesOf('LandingPage', module).add('Landing Page', () => <LandingPage />);
+storiesOf('MainChartContainer', module).add('Main Chart', () => <MainChartContainer />);
 
 storiesOf('Order Book', module)
   .add('Loading', () => <OrderBookContainer

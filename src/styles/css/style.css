@@ -401,10 +401,20 @@ input[type=number]::-webkit-outer-spin-button {
     fill: #fff !important; }
   .main-chart .chart-container g.react-stockcharts-tooltip text tspan.react-stockcharts-tooltip-label {
     fill: #48aff0 !important; }
+  .main-chart .chart-container g.react-stockcharts-tooltip text tspan {
+    fill: #fff; }
   .main-chart .chart-container g.react-stockcharts-tooltip text tspan[fill="#4682B4"] {
     fill: #fff; }
+  .main-chart .chart-container g.react-stockcharts-tooltip text tspan[fill="#FF0000"] {
+    fill: #FF0000; }
+  .main-chart .chart-container g.react-stockcharts-tooltip text tspan[fill="#00F300"] {
+    fill: #00F300; }
 
-.chart-overlay {
-  margin: 50px; }
+.chart-overlay .pt-card {
+  height: 100%; }
+.chart-overlay .main-chart .chart-container {
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 /*# sourceMappingURL=style.css.map */

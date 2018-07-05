@@ -125,5 +125,5 @@ export const fi = forceIndex()
 export const fiEMA13 = ema()
     .id(1)
     .options({ windowSize: 13, sourcePath: "fi" })
-    .merge((d, c) => { d.fiEMA13 = c; })
+    .merge((d, c) => {d.fiEMA13 = c;})
     .accessor(d => d.fiEMA13);

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { DepthChart, Loading } from "../components";
 
+var AmCharts = require("@amcharts/amcharts3-react");
+
 class DepthChartContainer extends React.Component {
 
     formatNumber = (val, chart, precision) => {

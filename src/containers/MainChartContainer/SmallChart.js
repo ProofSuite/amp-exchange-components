@@ -20,23 +20,26 @@ const timeSpans = [
     { name: '1 day' },
     { name: '7 days' },
     { name: '1 month' }
-];
+].map((p, index) => ({...p, rank: index}));
 
 const indicators = [
-    { name: 'MACD', active: true },
-    { name: 'RSI', active: false },
-    { name: 'Volume', active: true },
-    { name: 'Trendline', active: true },
-    { name: 'Reset', active: false }
+    { name: 'Volume', active: true, height: 0 },
+    { name: 'Trendline', active: true, height: 0 },
+    { name: 'MACD', active: true, height: 150 },
+    { name: 'RSI', active: false, height: 150 },
+    { name: 'ATR', active: false, height: 150 },
+    { name: 'ForceIndex', active: false, height: 300 },
+    { name: 'Reset', active: false, height: 0 },
 ].map((p, index) => ({...p, rank: index}));
+
 
 export default class SmallChart extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             data: [],
-            chartHeight: 550,
-            inidcatorHeight: 150,
+            chartHeight: 400,
+            indicatorHeight: 150,
             showIndicatorMenu: false,
             showTimeSpanMenu: false,
             currentTimeSpan: '',
@@ -46,29 +49,42 @@ export default class SmallChart extends React.Component {
         }
     }
 
+    getObjectFromArray = (arr, name) => {
+        let foundObj = {};
+        arr.map((obj) => {
+            if(obj.name === name) {
+                foundObj = obj;
+            }
+        })
+        return foundObj;
+    }
+
     toogleChartIndicator = (ind) => {
-        let indicatorTemp = this.state.indicators[ind.rank];
-        indicatorTemp.active = !indicatorTemp.active;
-        if(ind.name === "RSI") {
-            this.state.indicators[0].active = false;
-        }
-        else if (ind.name === "MACD") {
-            this.state.indicators[1].active = false;
-        }
-        else if (ind.name === "Reset") {
+        if (ind.name === "Reset") {
             this.state.indicators = indicators;
         }
-        this.forceUpdate();
-        if(this.state.indicators[0].active || this.state.indicators[1].active) {
+        else {
+            let indicatorTemp = this.getObjectFromArray(this.state.indicators, ind.name);
+            if (ind.name === "MACD") {
+                this.state.indicators[3].active = false;
+            }
+            else if (ind.name === "RSI") {
+                this.state.indicators[2].active = false;
+            }
+            indicatorTemp.active = !indicatorTemp.active;
+        }
+        if(!this.state.indicators[2].active && !this.state.indicators[3].active) {
             this.setState({
-                inidcatorHeight: 150
+                chartHeight: 550
             })
         }
         else {
             this.setState({
-                inidcatorHeight: 0
+                chartHeight: 400
             })
         }
+        this.forceUpdate();
+        console.log(this.state.indicators)
     }
     componentDidMount() {
         const self = this;
@@ -77,7 +93,7 @@ export default class SmallChart extends React.Component {
         })
 
     }
-    toogleMenus = (menu) => {
+    changeDuration = (menu) => {
         if(menu === "indicator") {
             this.setState(function (prevState) {
                 return {
@@ -105,31 +121,34 @@ export default class SmallChart extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <Card  className="pt-dark main-chart">
                 <Toolbar
-                    toogleMenus={this.toogleMenus}
+                    changeDuration={this.changeDuration}
                     toggleExpand={this.props.toggleExpand}
                     toogleChartIndicator={this.toogleChartIndicator}
                     changeTimeSpan={this.changeTimeSpan}
                     state={this.state}
                 />
                 <ChartLoadingScreen
-                    macd={this.state.indicators[0].active}
-                    rsi={this.state.indicators[1].active}
-                    volume={this.state.indicators[2].active}
-                    line={this.state.indicators[3].active}
-                    inidcatorHeight={this.state.inidcatorHeight}
+                    volume={this.state.indicators[0]}
+                    line={this.state.indicators[1]}
+                    macd={this.state.indicators[2]}
+                    rsi={this.state.indicators[3]}
+                    atr={this.state.indicators[4]}
+                    forceIndex={this.state.indicators[5]}
+                    indicatorHeight={this.state.indicatorHeight}
                     chartHeight={this.state.chartHeight}
                     data={this.state.data}
+                    expandedChard={this.props.expandedChard}
+                    width="100%"
                 />
             </Card>
         )
     }
 }
 
-const Toolbar = ({ state, toogleChartIndicator, changeTimeSpan, toogleMenus, toggleExpand }) => (
+const Toolbar = ({ state, toogleChartIndicator, changeTimeSpan, changeDuration, toggleExpand }) => (
     <div className="toolbar">
         <div className="menu time-span">
             <StandardSelect
@@ -149,14 +168,14 @@ const Toolbar = ({ state, toogleChartIndicator, changeTimeSpan, toogleMenus, tog
         </div>
         <div className="menu duration">
             <Icon icon="time"/>
-            <Button onClick={toogleMenus("1 hr")} text="1h"/>
-            <Button onClick={toogleMenus("6 hr")} text="6h"/>
-            <Button onClick={toogleMenus("1 day")} text="1d"/>
-            <Button onClick={toogleMenus("3 days")} text="3d"/>
-            <Button onClick={toogleMenus("7 days")} text="7d"/>
-            <Button onClick={toogleMenus("1 month")} text="1m"/>
-            <Button onClick={toogleMenus("3 months")} text="3m"/>
-            <Button onClick={toogleMenus("6 months")} text="6m"/>
+            <Button onClick={changeDuration("1 hr")} text="1h"/>
+            <Button onClick={changeDuration("6 hr")} text="6h"/>
+            <Button onClick={changeDuration("1 day")} text="1d"/>
+            <Button onClick={changeDuration("3 days")} text="3d"/>
+            <Button onClick={changeDuration("7 days")} text="7d"/>
+            <Button onClick={changeDuration("1 month")} text="1m"/>
+            <Button onClick={changeDuration("3 months")} text="3m"/>
+            <Button onClick={changeDuration("6 months")} text="6m"/>
         </div>
         <Button icon="fullscreen" onClick={toggleExpand}/>
     </div>

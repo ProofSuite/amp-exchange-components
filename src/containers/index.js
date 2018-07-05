@@ -6,6 +6,7 @@ import DepthChartContainer from "./DepthChartContainer";
 import OrdersStats from "./OrdersStats";
 import HomePage from "./HomePage";
 import MainChartContainer from "./MainChartContainer";
+import LandingPage from "./LandingPage";
 
 
 export {
@@ -16,5 +17,6 @@ export {
     DepthChartContainer,
     OrdersStats,
     HomePage,
-    MainChartContainer
+    MainChartContainer,
+    LandingPage
 }
