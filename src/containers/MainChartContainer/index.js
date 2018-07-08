@@ -21,10 +21,12 @@ class MainChartContainer extends React.Component {
         return (
             <div>
                 <SmallChart
+                    ohlcvData={this.props.ohlcvData || []}
                     toggleExpand={this.toggleExpand}
                     expandedChard={this.state.expandedChard}
                 />
                 <ExtendedChart
+                    ohlcvData={this.props.ohlcvData || []}
                     expandedChard={this.state.expandedChard}
                     toggleExpand={this.toggleExpand}
                 />

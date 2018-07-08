@@ -86,7 +86,6 @@ class CandleStickChartWithMACDIndicator extends React.Component {
             indicatorHeight, atr, macd, rsi, line, volume,
             chartHeight, forceIndex
         } = this.props;
-        console.log(this.props.atr)
 
 
         let calculatedData = calculateData(initialData);
@@ -114,7 +113,6 @@ class CandleStickChartWithMACDIndicator extends React.Component {
             redChilli: '#d62323',
             axis: '#fff',
         }
-        console.log(chartHeight, indicatorHeight, 50)
         return (
             <div>
                 <ChartCanvas height={chartHeight + indicatorHeight + 50}
@@ -170,7 +168,7 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                         <MouseCoordinateX
                             at="bottom"
                             orient="bottom"
-                            displayFormat={timeFormat("%Y-%m-%d")}
+                            displayFormat={timeFormat("%m-%d/%H:%M")}
                             rectRadius={5}
                             {...mouseEdgeAppearance}
                         />

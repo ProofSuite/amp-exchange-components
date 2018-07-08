@@ -11,7 +11,6 @@ import { Overlay, Button } from "@blueprintjs/core";
 export default class ChartLoadingScreen extends React.Component {
     render() {
         const nullIndicator = {name: '', height: 0, active: false};
-
         if (this.props.data.length < 1) {
             return <Loading />
         }

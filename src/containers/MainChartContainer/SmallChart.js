@@ -89,7 +89,8 @@ export default class SmallChart extends React.Component {
     componentDidMount() {
         const self = this;
         getData().then(data => {
-            self.setState({ data: data })
+            // console.log(data, 'getting data')
+            // self.setState({ data: data })
         })
 
     }
@@ -112,35 +113,37 @@ export default class SmallChart extends React.Component {
     changeTimeSpan = e => {
         this.setState({ currentTimeSpan: e })
     }
-    toggleExpand = () => {
-        this.setState((prevState) => {
-            return {
-                expandedChard: !prevState.expandedChard
-            }
-        })
-    }
 
     render() {
+        const {
+            props: {
+                expandedChard, toggleExpand, ohlcvData
+            },
+            state: {
+                indicators, chartHeight, indicatorHeight
+            },
+            changeTimeSpan, toogleChartIndicator, changeDuration
+        } = this;
         return (
             <Card  className="pt-dark main-chart">
                 <Toolbar
-                    changeDuration={this.changeDuration}
-                    toggleExpand={this.props.toggleExpand}
-                    toogleChartIndicator={this.toogleChartIndicator}
-                    changeTimeSpan={this.changeTimeSpan}
+                    changeDuration={changeDuration}
+                    toggleExpand={toggleExpand}
+                    toogleChartIndicator={toogleChartIndicator}
+                    changeTimeSpan={changeTimeSpan}
                     state={this.state}
                 />
                 <ChartLoadingScreen
-                    volume={this.state.indicators[0]}
-                    line={this.state.indicators[1]}
-                    macd={this.state.indicators[2]}
-                    rsi={this.state.indicators[3]}
-                    atr={this.state.indicators[4]}
-                    forceIndex={this.state.indicators[5]}
-                    indicatorHeight={this.state.indicatorHeight}
-                    chartHeight={this.state.chartHeight}
-                    data={this.state.data}
-                    expandedChard={this.props.expandedChard}
+                    volume={indicators[0]}
+                    line={indicators[1]}
+                    macd={indicators[2]}
+                    rsi={indicators[3]}
+                    atr={indicators[4]}
+                    forceIndex={indicators[5]}
+                    indicatorHeight={indicatorHeight}
+                    chartHeight={chartHeight}
+                    data={ohlcvData}
+                    expandedChard={expandedChard}
                     width="100%"
                 />
             </Card>
