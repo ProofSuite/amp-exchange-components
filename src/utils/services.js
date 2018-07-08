@@ -79,16 +79,19 @@ export function parseData(parse) {
         d.low = +d.low;
         d.close = +d.close;
         d.volume = +d.volume;
-
+        // console.log(d, 'd');
         return d;
     };
 }
 
 export const parseDate = timeParse("%Y-%m-%d");
 
-export function getData() {
-    const promiseMSFT = fetch("http://rrag.github.io/react-stockcharts/data/MSFT_full.tsv")
+export async function getData() {
+    const promiseMSFT = await fetch("http://rrag.github.io/react-stockcharts/data/MSFT_full.tsv")
         .then(response => response.text())
-        .then(data => tsvParse(data, parseData(parseDate)))
+        .then(data => {
+            // console.log(tsvParse(data, parseData(parseDate)), 'api data')
+            return tsvParse(data, parseData(parseDate));
+        })
     return promiseMSFT;
 }
